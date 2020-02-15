@@ -1,0 +1,43 @@
+<div class="content">
+    <mat-card>
+        <mat-form-field>
+            <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filtrar">
+        </mat-form-field>
+
+        <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+
+            <!-- ID Column -->
+            <ng-container matColumnDef="id">
+                <th mat-header-cell *matHeaderCellDef> ID </th>
+                <td mat-cell *matCellDef="let element"> {{element.id}} </td>
+            </ng-container>
+
+            <!-- Vehiculo Column -->
+            <ng-container matColumnDef="name_concat">
+                <th mat-header-cell *matHeaderCellDef> Vehículo </th>
+                <td mat-cell *matCellDef="let element"> {{element.name_concat}} </td>
+            </ng-container>
+
+            <!-- Año Column -->
+            <ng-container matColumnDef="year">
+                <th mat-header-cell *matHeaderCellDef> Año </th>
+                <td mat-cell *matCellDef="let element"> {{element.year}} </td>
+            </ng-container>
+
+            <!-- Estado Column -->
+            <ng-container matColumnDef="state">
+                <th mat-header-cell *matHeaderCellDef> Estado </th>
+                <td mat-cell *matCellDef="let element"> {{element.state}} </td>
+            </ng-container>
+            
+            <!-- Precio Column -->
+            <ng-container matColumnDef="price">
+                <th mat-header-cell *matHeaderCellDef> Precio </th>
+                <td mat-cell *matCellDef="let element"> {{element.price}} </td>
+            </ng-container>
+
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+        </table>
+    </mat-card>
+</div>

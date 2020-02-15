@@ -1,0 +1,31 @@
+.container {
+  position: relative;
+  width: 100%;
+  display: grid;
+  grid-template-columns: 20% 80%;
+  grid-template-rows: 120x calc(100% - 120px);
+}
+.container .header {
+  position: relative;
+  height: 60px;
+  z-index: 1000;
+  width: 100%;
+  display: grid;
+  grid-column-start: 1;
+  grid-column-end: 3;
+}
+.container .side-nav {
+  height: 100vh;
+  display: grid;
+  grid-row-start: 2;
+  grid-row-end: 3;
+}
+.container .main {
+  position: relative;
+  width: 100%;
+  right: 0;
+  padding-top: 1rem;
+  padding-left: 1rem;
+  height: 100%;
+  min-height: 100vh;
+}

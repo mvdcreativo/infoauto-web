@@ -1,0 +1,39 @@
+$primary:#2D86F7;
+// $primary:#0CB39C;
+$secondary: rgb(12, 179, 156);
+
+
+$text-color-primary: white;
+$nav-primary-back:#EFBF19;
+$background-color : #ECEFF0;
+$title-color: #424242; 
+
+
+
+.btn-primary{
+    background-color: $primary;
+    color: $text-color-primary;
+    font-weight: 200;
+}
+.a-primary{
+    color: $primary;
+}
+
+.nav-primary{
+    background-color: $nav-primary-back;
+    color: $text-color-primary
+}
+.color-back{
+    background-color: #ECEFF0;
+}
+h2{
+    color: $title-color;
+}
+.btn-second{
+    font-size: 1em;
+    color: white;
+    background-color: rgb(12, 179, 156);
+    &:hover{
+        background-color: rgb(0, 168, 168);
+    }
+}

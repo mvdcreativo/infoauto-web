@@ -1,0 +1,9 @@
+ul {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  margin-bottom: 2rem;
+}
+ul li {
+  font-size: 0.8em;
+  padding: 0.5rem;
+}

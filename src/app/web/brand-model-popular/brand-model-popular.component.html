@@ -1,0 +1,29 @@
+<section class="brans-model-popular">
+    <div class="cards" *ngFor="let item of items; let i=index">
+
+        <div class="card" [style.background-image]="'url('+urlImageBack+item.image_url+')'">
+
+            <div class="title"  >
+                <h2>{{ item.name }}</h2>
+                <!-- <div class="logo-marca"></div> -->
+            </div>
+            <div class="card-info">
+
+                <div class="models">
+                    <ul>
+                        <li *ngFor="let item of item.vehicle_models; let i=index">
+                            <a *ngIf="i<3" [routerLink]="['/listado']" [queryParams]="{model: item.slug}">
+                                <span>
+                                    <i class="material-icons">chevron_right</i>
+                                    {{ item.name }}
+                                </span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+</section>

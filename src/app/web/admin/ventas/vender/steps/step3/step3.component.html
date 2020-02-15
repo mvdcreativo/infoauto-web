@@ -1,0 +1,34 @@
+<h2>Fotos del Vehículo</h2>
+        <div class="images">
+            <div class="image" *ngFor="let image of images; let i = index">
+                <span *ngIf="image.id" class="ico-delete">
+                    <a (click)="removeImage(i)"><i class="material-icons">remove_circle</i></a>
+                </span>
+                <label for="image">
+                    <img class="img" [src]="image.url" alt="">
+                </label>
+                <input type="file" (change)="uploadImage($event, i)" hidden id="image" multiple>
+            </div>
+        </div>
+        <form [formGroup]="formStep3" (ngSubmit)="submitStep3()">
+            <!-- <div class="extras">
+                <h2>Selecciona las opciones</h2>
+                <ul >
+                    <li formArrayName="extras" *ngFor="let ext of extraIterable; let i = index">
+                        <mat-checkbox [formControlName]="i">{{ extras[i].name }}</mat-checkbox>
+                    </li>
+                </ul>
+            </div> -->
+            <div class="description">
+                <h2>Cuentanos sobre tu vehículo</h2>
+                <mat-form-field class="text-description">
+                    <textarea formControlName="description"  matInput #description maxlength="1000" placeholder="Descripción"></textarea>
+                    <mat-hint align="start"><strong>Por su seguridad no introdusca datos personales</strong> </mat-hint>
+                    <mat-hint align="end">{{description.value.length}} / 1000</mat-hint>
+                </mat-form-field>
+            </div>
+            <div class="content-btns"> 
+                <button mat-button>Atras</button>
+                <button class="btn-second nex" mat-button [disabled]="!formStep3.valid" (click)="submitStep3" >Siguiente</button>
+            </div>
+        </form>

@@ -1,0 +1,65 @@
+<div class="searcher-content">
+    <form [formGroup]="formSearch" (ngSubmit)="onSubmit()">
+        <div class="row1">
+            <mat-form-field  appearance="none" class="category">
+                <mat-label>Tipo Vehículo</mat-label>
+                <mat-select formControlName="category" [(value)]="categoryId"  (selectionChange)="changeCategory($event)"  >
+                    <mat-option *ngFor="let category of categories" [value]='category.id'>{{ category.name }}</mat-option>
+                </mat-select>
+            </mat-form-field>
+            
+
+            <mat-form-field  appearance="none" class="brand">
+                <mat-label>Marca</mat-label>
+                <mat-select formControlName="brand"  (selectionChange)="changeBrand($event)">
+                    <mat-option [value]=''>Ninguna marca</mat-option>
+                    <mat-option *ngFor="let brand of brands" [value]='brand.id'>{{ brand.name }}</mat-option>
+                </mat-select>
+            </mat-form-field>
+
+            <mat-form-field  appearance="none" class="model">
+                <mat-label>Modelo</mat-label>
+                <mat-select formControlName="model">
+                    <mat-option>Ningún modelo</mat-option>
+                    <mat-option *ngFor="let model of models" [value]='model.id'>{{ model.name }}</mat-option>
+                </mat-select>
+            </mat-form-field>
+        </div>
+        <div class="row2">
+            <span class="precio-title">Precio</span>
+            <span class="ano-title">Año</span>
+            <mat-form-field  appearance="none" class="price-d">
+                <mat-label>Desde</mat-label>
+                <mat-select formControlName="pricemin">
+                    <mat-option>Sin mínimo</mat-option>
+                    <mat-option *ngFor="let precio of precios" [value]='precio.value'>$U {{ precio.option | number}}</mat-option>
+                </mat-select>
+            </mat-form-field>
+
+            <mat-form-field  appearance="none" class="price-h">
+                <mat-label>Hasta</mat-label>
+                <mat-select formControlName="pricemax">
+                    <mat-option>Sin máximo</mat-option>
+                    <mat-option *ngFor="let precio of precios" [value]='precio.value'>$U {{ precio.option | number}}</mat-option>
+                </mat-select>
+            </mat-form-field>
+            
+            <mat-form-field appearance="none" class="ano-d">
+                <mat-label>Desde</mat-label>
+                <mat-select formControlName="yearmin">
+                    <mat-option>Sin mínimo</mat-option>
+                    <mat-option *ngFor="let ano of anos" [value]='ano.value'>{{ ano.option}}</mat-option>
+                </mat-select>
+            </mat-form-field>
+
+            <mat-form-field appearance="none" class="ano-h">
+                <mat-label>Hasta</mat-label>
+                <mat-select formControlName="yearmax">
+                        <mat-option>Sin máximo</mat-option>
+                        <mat-option *ngFor="let ano of anos" [value]='ano.value'>{{ ano.option}}</mat-option>
+                    </mat-select>
+            </mat-form-field>
+        </div>
+        <button class="btn-buscar btn-primary" mat-flat-button>Buscar</button>
+    </form>
+</div>

@@ -1,0 +1,22 @@
+<h1 *ngIf="vehiculo && !detalle">Precios para {{ vehiculo }}</h1>
+<div class="" [ngClass]="{'content': !detalle, 'detalle-chart': detalle}" *ngIf="vehiculo">
+  <div class="chart">
+    <canvas baseChart [datasets]="lineChartData" [labels]="lineChartLabels"
+      [options]="lineChartOptions" [colors]="lineChartColors" [legend]="lineChartLegend" [chartType]="lineChartType"
+      [plugins]="lineChartPlugins">
+    </canvas>
+  </div>
+  <div class="ref-detalle" *ngIf="detalle"><span>Referencia de precios</span> </div>
+  <div class="precio-min" *ngIf="!detalle">
+    <h2>Mínimo</h2>
+    USD {{ pMin | number }}
+  </div>
+  <div class="precio-sug" *ngIf="!detalle">
+    <h2>Precio sugerido</h2>
+    USD {{ pSug | number}}
+  </div>
+  <div class="precio-max" *ngIf="!detalle">
+    <h2>Máximo</h2>
+    USD {{ pMax| number }}
+  </div>
+</div>

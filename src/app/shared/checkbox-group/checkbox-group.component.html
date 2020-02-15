@@ -1,0 +1,7 @@
+<form [formGroup]="form">
+    <ul formArrayName="items">
+        <li *ngFor="let item of items.controls; index as i">
+            <mat-checkbox [formControlName]="i">{{options[i].label}}</mat-checkbox>
+        </li>
+    </ul>
+</form>

@@ -1,0 +1,16 @@
+.filters-bar{
+    background-color: transparent;
+    position: relative;
+    .chip-list{
+        width: 20%;
+        .chip, span.chip{
+            font-size: 0.7em;
+            text-transform: uppercase;
+        }
+
+    }
+    .mat-standard-chip{
+        min-height: 1.5rem;
+    }
+
+}

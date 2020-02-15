@@ -1,0 +1,5 @@
+<main class="main-result" *ngIf="resultados ; else loading">
+    <cards *ngFor="let res of resultados" [data]='res'></cards>
+    
+</main>
+<ng-template #loading>Cargando...</ng-template>

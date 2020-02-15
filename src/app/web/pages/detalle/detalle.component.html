@@ -1,0 +1,81 @@
+<div class="container" *ngIf="vehiculo">
+    <header class="header">
+
+        <nav-bar></nav-bar>
+    </header>
+    <div class="images">
+        <gallery class="gallery" [images]='vehiculo.images'></gallery>
+    </div>
+    <div class="data-user">
+        <h2>{{ title }}</h2>
+        <div class="year-km">
+            <span>año {{ vehiculo.year }}</span> - <span>{{ vehiculo.km }} Km.</span>
+        </div>
+        <div class="ubication">
+            <span>{{ vehiculo.city.name }} </span>
+        </div>
+        <div class="precio">
+            <h2>{{ vehiculo.currency.abbreviation }} {{ vehiculo.price | number}}</h2>
+        </div>
+        <div class="contactar">
+            <button class="btn-buscar btn-primary" mat-flat-button>Contactar</button>
+        </div>
+
+        <div class="chart">
+            <chart [vehiculoDetalle] = "vehiculo"></chart>
+        </div>
+    </div>
+    <mat-card class="info">
+        <div class="attributes">
+            <h2>Ficha Tecnica y Equipamiento</h2>
+            <div class="content-ficha">
+                <ul>
+                    <li *ngFor="let item of vehiculo.attributes">
+                        <mat-icon aria-hidden="false">done</mat-icon>
+                        {{ item.name }}
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="extras">
+            <h2>Extras</h2>
+            <div class="content-ficha">
+                <ul>
+                    <li *ngFor="let item of vehiculo.extras">
+                        <mat-icon aria-hidden="false">done</mat-icon>
+                        {{ item.name }}
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="description">
+            <h2>Descripción del vendedor</h2>
+            <div class="content-ficha">
+                <p>
+                    {{ vehiculo.description }}
+                </p>
+            </div>
+        </div>
+    </mat-card>
+    <div class="interes">
+
+        <section class="relacionados">
+            <h2>Quizás estos vehículos te pueden interesar</h2>
+            <span>
+                <a [routerLink]="['/listado']"
+                    [queryParams]="{brand : vehiculo.brand.slug, model : vehiculo.vehicle_model.slug}">Ver más...</a>
+            </span>
+            <res-reutil [criterio]='{brand : vehiculo.brand.slug, model : vehiculo.vehicle_model.slug, limit_page: 5}'>
+            </res-reutil>
+        </section>
+        <section class="pub-vendedor">
+            <h2>Más publicaciones de este Vendedor</h2>
+            <span><a [routerLink]="['/listado']" [queryParams]="{user : vehiculo.user.slug}">Ver más...</a> </span>
+            <res-reutil [criterio]='{user_id : vehiculo.user_id,  limit_page: 5}'></res-reutil>
+        </section>
+    </div>
+
+</div>
+<section class="footer">
+    <footer-component></footer-component>
+</section>

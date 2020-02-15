@@ -1,0 +1,40 @@
+
+.mat-dialog-title{
+    background-color: rgb(12, 179, 156);
+    color: white;
+    padding: 0px;
+}
+.mat-dialog-content{
+    padding: 2rem;
+}
+form{
+    display: grid;
+    width: 100%;
+    grid-template-columns: 1fr;
+    .mail , .pass{
+        width: 100%;
+        padding: 0.8rem;
+    }
+    .actions{
+        width: 100%;
+        display: grid;
+        justify-items: center;
+        .back{
+            width: 200px;
+            cursor: pointer;
+            padding: 0.8rem;
+            font-size: 1em;
+            text-align: center;
+            outline: none;
+        }
+        .next{
+            width: 100%;
+            font-size: 1em;
+            padding: 0.5rem;
+            font-weight: 500;
+            outline: none;
+
+        }
+    }
+    
+}

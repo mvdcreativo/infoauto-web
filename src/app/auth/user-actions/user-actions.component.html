@@ -1,0 +1,48 @@
+<ng-container *ngIf="currentUser; then loged; else noLoged"></ng-container>
+
+<ng-template #loged>
+    <div class="user" [ngStyle]="{'color': color}">
+        <a class="account" [ngStyle]="{'color': color}" 
+            [matMenuTriggerFor]="menu" 
+            (mouseenter)="menuTrigger.openMenu()"
+            #menuTrigger="matMenuTrigger"
+            >
+            Mi cuenta
+        </a>
+        <a class="menu-user" [ngStyle]="{'color': color}" aria-label="">
+            <span>{{ currentUser.name }}</span>
+            <i class="material-icons">person</i>
+        </a>
+        <mat-menu [overlapTrigger]="false" #menu="matMenu">
+            <span (mouseleave)="menuTrigger.closeMenu()">
+                <button mat-menu-item [routerLink]="[ '/mi-cuenta/ventas/publicaciones' ]">
+                    <mat-icon>art_track</mat-icon>
+                    <span>Publicaciones</span>
+                </button>
+                <button mat-menu-item>
+                    <mat-icon>favorite_border</mat-icon>
+                    <span>Favoritos</span>
+                </button>
+                <button mat-menu-item>
+                    <mat-icon>person_pin</mat-icon>
+                    <span>Mis Datos</span>
+                </button>
+                <button mat-menu-item (click)="logout()">
+                    <mat-icon>exit_to_app</mat-icon>
+                    <span>Salir</span>
+                </button>
+            </span>
+
+        </mat-menu>
+    </div>
+</ng-template>
+
+<ng-template #noLoged>
+    <div class="user">
+        <span></span>
+        <span>
+            <a mat-button class="login" (click)="login()" [ngStyle]="{'color': color}">Entrar</a>
+            <a mat-button href="#" class="register btn-primary">Registrarse</a>
+        </span>
+    </div>
+</ng-template>

@@ -1,0 +1,20 @@
+<!-- <virtual-scroller class="main-result" #scroll [items]="items" *ngIf="resultados ; else loading" >
+    <cards class="cards" *ngFor="let res of resultados; let i=index " [data]='res'></cards>
+
+</virtual-scroller>
+<ng-template #loading>Cargando...</ng-template> -->
+
+
+
+<div class="results" *ngIf="resultados ; else loading" 
+    infiniteScroll 
+    [infiniteScrollDistance]="1"
+    (scrolled)="onScroll()">
+    <div class="main-result">
+        <cards class="cards" *ngFor="let res of resultados; let i=index " [data]='res'></cards>
+
+    </div>
+
+</div>
+
+<ng-template #loading>Cargando...</ng-template>

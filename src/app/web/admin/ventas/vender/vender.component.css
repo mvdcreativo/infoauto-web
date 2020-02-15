@@ -1,0 +1,60 @@
+.conttent {
+  width: 100%;
+}
+.step {
+  width: 100%;
+}
+.step form {
+  display: grid;
+}
+ul {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+}
+ul li {
+  font-size: 0.8em;
+  padding: 0.5rem;
+}
+form .content-btns {
+  margin-top: 2rem;
+}
+form .content-btns .nex {
+  margin-left: 1rem;
+}
+h2 {
+  padding: 1rem;
+  width: 100%;
+}
+.images {
+  display: grid;
+  width: 100%;
+  grid-template-columns: repeat(8, 1fr);
+  justify-items: center;
+  row-gap: 1rem;
+}
+.images .image {
+  padding: 0.5rem;
+  border: 1px #d4d4d4;
+  border-style: dashed;
+}
+.images .image .ico-delete {
+  font-size: 0.8em;
+  position: absolute;
+}
+.images .image .ico-delete .material-icons {
+  border-radius: 2px;
+  color: #ff7676;
+}
+.images .image label {
+  cursor: pointer;
+}
+.images .image label .img {
+  width: 100px;
+}
+.description {
+  width: 100%;
+}
+.description .text-description {
+  width: 100%;
+  height: 150px;
+}

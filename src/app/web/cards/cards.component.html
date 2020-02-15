@@ -1,0 +1,39 @@
+<div class="card">
+
+    <div class="card-image">
+        <a [routerLink]="[
+        '/vehiculo', 
+        data.id, 
+        data.brand.slug,
+        data.vehicle_model.slug,
+        data.year
+        ]">
+            <img [src]="data.images[0].url" alt="">
+        </a>
+    </div>
+    <div class="card-info">
+        <div class="card-title">
+            <a [routerLink]="[
+            '/vehiculo', 
+            data.id, 
+            data.brand.slug,
+            data.vehicle_model.slug,
+            data.year
+            ]">
+                <h2>{{ data.brand.name }} {{data.vehicle_model.name }}</h2>
+            </a>
+        </div>
+        <div class="year-km">
+            <span>año {{ data.year }}</span> - <span>{{ data.km }}Kms.</span>
+        </div>
+        <div class="ubication">
+            <span>{{ data.city.name }} </span>
+        </div>
+        <div class="venta">
+                <span>{{ data.price_condition.name }} </span>
+        </div>
+        <div class="precio">
+            <h2>{{ data.currency.abbreviation }} {{ data.price | number }}</h2>
+        </div>
+    </div>
+</div>

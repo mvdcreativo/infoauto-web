@@ -1,0 +1,70 @@
+<div class="content">
+    <ul class="list">
+        <li class="list-item">
+            <i class="material-icons-outlined">receipt</i>
+            <span>Ventas</span>
+            <ul class="sub-list">
+                <li class="item-sublist">
+                    <a [routerLink]="['ventas/vender']" >Vender</a> 
+                </li>
+                <li class="item-sublist">
+                    <a [routerLink]="['ventas/publicaciones']">Publicaciones</a> 
+                </li>
+                <li class="item-sublist">
+                    <a href="http://">Pagos</a> 
+                </li>
+            </ul>
+        </li>
+        <li class="list-item">
+            <i class="material-icons ">person_pin</i>
+            <span>Mis Datos</span>
+            <ul class="sub-list">
+                <li class="item-sublist">
+                    <a href="http://">Perfil</a> 
+                </li>
+            </ul>
+        </li>
+    </ul>
+    
+    <mat-divider></mat-divider>
+    
+    
+    <ul class="list">
+        <li class="list-item">
+            <i class="material-icons-outlined">settings_applications</i>
+            <span>Menu Administrador</span>  
+            <ul class="sub-list">
+                <li class="item-sublist">
+                    <span>Marcas y Modelos</span> 
+                    <ul class="sub-list">
+                        <li class="item-sublist">
+                            <a [routerLink]="[ 'settings-api/tipo-vehiculo' ]" >Tipos de Vehículos</a>
+                        </li>
+                        <li class="item-sublist">
+                            <a [routerLink]="[ 'settings-api/marcas' ]">Marcas</a>
+                        </li>
+                        <li class="item-sublist">
+                            <a [routerLink]="[ 'settings-api/modelos' ]">Modelos</a>
+                        </li>
+                        <li class="item-sublist">
+                            <a [routerLink]="[ 'settings-api/sub-modelos' ]">Sub-Modelos</a>
+                        </li>
+                    </ul>     
+                </li>
+                <li class="item-sublist">
+                    <span>Especificaciones</span> 
+                    <ul class="sub-list">
+                        <li class="item-sublist">
+                            <a [routerLink]="[ 'settings-api/atributos' ]">Confort y Seguridad</a>
+                        </li>
+                        <li class="item-sublist">
+                            <a [routerLink]="[ 'settings-api/extras' ]">Caracteristicas extra</a>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </li>
+    </ul>
+
+    
+</div>

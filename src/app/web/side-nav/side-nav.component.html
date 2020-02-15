@@ -1,0 +1,108 @@
+<div class="content">
+    <div class="filters-selected">
+        <filter-bar class=""></filter-bar>
+    </div>
+    <div class="res-total">{{ resultTotal }} vehículos encontrados</div>
+    <div class="filters">
+        <div class="marcas item" *ngIf="marcas && marcas.length != 1">
+            <h6>Marcas</h6>
+            <ul *ngIf="stateB == false;else masMarca">
+                <li *ngFor="let marca of marcas let i=index"><a (click)="addCriterios('brand',marca.slug)"
+                        class="item-side-bar">{{ marca.name }}</a> </li>
+            </ul>
+            <span *ngIf="marcas.length >= 5" class="item-side-bar mas-menos"><a (click)="stateMarcas(stateB = !stateB)"
+                    class="item-side-bar">{{stateB ? 'Mostrar menos...' : 'Mostrar más...'}}</a></span>
+            <ng-template #masMarca>
+                <mat-card class="card-float">
+                    <span class="close" (click)="stateMarcas(stateB = !stateB)">
+                        <mat-icon>close</mat-icon>
+                    </span>
+                    <ul>
+                        <li *ngFor="let marca of marcas let i=index"><a (click)="addCriterios('brand',marca.slug)"
+                                class="item-side-bar">{{ marca.name }}</a> </li>
+                    </ul>
+
+                </mat-card>
+            </ng-template>
+
+        </div>
+        <div class="modelos item" *ngIf="modelos && marcas.length <= 1 && modelos.length != 1">
+            <h6>Modelos</h6>
+            <ul *ngIf="stateM == false;else masModel">
+                <li *ngFor="let modelo of modelos"><a (click)="addCriterios('model',modelo.slug)"
+                        class="item-side-bar">{{ modelo.name }}</a></li>
+                <li *ngIf="modelos && modelos.length >= 5" class="item-side-bar mas-menos"><a
+                        (click)="stateModel(stateM = !stateM)"
+                        class="item-side-bar">{{stateM ? 'Mostrar menos...' : 'Mostrar más...'}}</a></li>
+            </ul>
+            <ng-template #masModel>
+                <mat-card class="card-float">
+                    <span class="close" (click)="stateModel(stateM = !stateM)">
+                        <mat-icon>close</mat-icon>
+                    </span>
+                    <ul>
+                        <li *ngFor="let modelo of modelos"><a (click)="addCriterios('model',modelo.slug)"
+                                class="item-side-bar">{{ modelo.name }}</a></li>
+                        <li class="item-side-bar mas-menos"><a (click)="stateModel(stateM = !stateM)"
+                                class="item-side-bar">{{stateM ? 'Mostrar menos...' : 'Mostrar más...'}}</a></li>
+                    </ul>
+                </mat-card>
+            </ng-template>
+        </div>
+        <div class="conditions item" *ngIf="conditions && conditions.length >= 2">
+            <h6>Estado</h6>
+            <ul>
+                <li *ngFor="let condition of conditions">
+                    <a (click)="addCriterios('condition',condition.slug)" class="item-side-bar">{{ condition.name }}</a>
+                </li>
+            </ul>
+        </div>
+        <div class="years item">
+            <h6>Año</h6>
+            <mat-form-field class="ano-d">
+                <mat-label>Desde</mat-label>
+                <mat-select (selectionChange)="addCriterios('yearmin', $event.value)" [value]="criterio.yearmin">
+                    <mat-option>Sin mín</mat-option>
+                    <mat-option *ngFor="let ano of anos" [value]='ano.value'>{{ ano.option}}</mat-option>
+                </mat-select>
+            </mat-form-field>
+
+            <mat-form-field class="ano-h">
+                <mat-label>Hasta</mat-label>
+                <mat-select (selectionChange)="addCriterios('yearmax', $event.value)" [value]="criterio.yearmax">
+                    <mat-option>Sin máx</mat-option>
+                    <mat-option *ngFor="let ano of anos" [value]='ano.value'>{{ ano.option}}</mat-option>
+                </mat-select>
+            </mat-form-field>
+        </div>
+        <div class="attributes item" *ngIf="attributes.length != 0">
+            <h6>Attributos</h6>
+            <ul>
+                <li *ngFor="let attribute of attributes"><a (click)="addCriterios('attribute',attribute.slug)"
+                        class="item-side-bar">{{ attribute.name }}</a></li>
+            </ul>
+        </div>
+        <div class="precios item">
+            <h6>Precio</h6>
+            <mat-form-field class="price-d">
+                <mat-label>Desde</mat-label>
+                <mat-select (selectionChange)="addCriterios('pricemin', $event.value)">
+                    <mat-option>Sin mínimo</mat-option>
+                    <mat-option *ngFor="let precio of precios" [value]='precio.value'>$U {{ precio.option | number}}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+
+            <mat-form-field class="price-h">
+                <mat-label>Hasta</mat-label>
+                <mat-select (selectionChange)="addCriterios('pricemax', $event.value)">
+                    <mat-option>Sin máximo</mat-option>
+                    <mat-option *ngFor="let precio of precios" [value]='precio.value'>USD {{ precio.option | number}}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+        </div>
+    </div>
+    <ng-template #loading>Cargando...</ng-template>
+
+</div>

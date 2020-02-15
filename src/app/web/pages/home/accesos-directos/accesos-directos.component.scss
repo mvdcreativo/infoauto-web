@@ -1,0 +1,42 @@
+.content{
+    margin-left: auto;
+    margin-right: auto;
+    display: grid;
+    grid-template-columns: repeat(1,1fr);
+    height: 15vh;
+    column-gap: 2rem;
+    max-width: 1024px;
+    .btn{
+        padding: 1rem;
+        border-radius: 5px;
+        .icon-acc {
+            width: 50%;
+            padding: 1%;
+            fill: white;
+            
+        }
+
+    }
+
+}
+
+@media (min-width: 800px) {
+    
+    .content{
+        .btn{
+            margin-bottom: 1rem;
+            
+        }
+        height: auto;
+        grid-template-columns: repeat(2,1fr);
+        max-width: 75%;
+    }
+}
+
+@media (min-width: 1024px) {
+    .content{
+        height: 15vh;
+
+        grid-template-columns: repeat(4,1fr);
+    }
+}

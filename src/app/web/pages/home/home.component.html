@@ -1,0 +1,29 @@
+<div class="container">
+    <div class="user-actions">
+        <user-actions-component [color] = "'white'"></user-actions-component>
+    </div>
+    <header class="header">
+        <div class="searcher">
+            <searcher></searcher>
+        </div>
+    </header>
+    <section class="accesos-directos">
+        <accesos-directos></accesos-directos>
+    </section>
+    <section class="destacados">
+        <h2>Destacados 0km</h2>
+        <res-reutil [criterio]='{tariff_id : 1, condition: "0km", limit_page: 5}'></res-reutil>
+    </section>
+    <section class="destacados">
+            <h2>Destacados Usados</h2>
+            <res-reutil [criterio]='{tariff_id : 1, condition: "usado", limit_page: 5}'></res-reutil>
+    </section>
+    <section class="model-brand-popular">
+        <h2>Modelos más buscados</h2>
+        <!-- <span><a [routerLink]="['/listado']" [queryParams]="{}">Ver más...</a> </span> -->
+        <brand-model-popular></brand-model-popular>
+    </section>
+    <section>
+        <footer-component></footer-component>
+    </section>
+</div>

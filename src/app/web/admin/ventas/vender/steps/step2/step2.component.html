@@ -1,0 +1,25 @@
+<checkbox-group [options]="attrCheckboxes" [selectedValues]="publicationAttributes" (toggle)="attCheck($event,0)">
+</checkbox-group>
+
+<div *ngFor="let item of attrCheckboxesChildren; let i=index">
+    
+    <label id="example-radio-group-label">{{ item.title }}</label>
+    
+    <mat-radio-group aria-labelledby="example-radio-group-label">
+        <mat-radio-button class="example-radio-button" *ngFor="let season of item.attributes" [value]="season">
+            {{season}}
+        </mat-radio-button>
+    </mat-radio-group>
+ 
+    <!-- <h5>{{ item.title }}</h5>
+    <checkbox-group [options]="item.attributes" [selectedValues]="publicationAttributes" (toggle)="attCheck($event, i+1)">
+    </checkbox-group> -->
+</div>
+
+
+
+
+<div class="content-btns">
+    <button mat-button>Atras</button>
+    <button class="btn-second nex" mat-button (click)="submitStep2()">Siguiente</button>
+</div>

@@ -1,0 +1,32 @@
+.content{
+    width: 100%;
+    .mat-table {
+        width: 100%;
+    }
+    .mat-form-field {
+        font-size: 14px;
+        width: 20%;
+        margin-left: 1rem;
+    }
+    .btn{
+        background-color: #2D86F7;
+        color: white;
+        margin: 1rem;
+    }
+    form{
+        .mat-form-field {
+            font-size: 14px;
+            width: 30%;
+            margin-left: 1rem;
+        }
+    }
+    .acciones{
+        width: 20%;
+    }
+    .no-shadow{
+        box-shadow: none;
+        color: #424242;
+        background-color: transparent;
+    }
+
+}

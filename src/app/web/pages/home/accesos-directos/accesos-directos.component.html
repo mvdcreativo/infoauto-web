@@ -1,0 +1,19 @@
+<div class="content">
+    <a [routerLink]="['/listado']" [queryParams]= "{ condition : '0km'}"  mat-flat-button class="btn btn-primary">
+        <img src="../../../../../assets/images/acc-nuevo.svg" class="icon-acc"> 
+        Nuevos
+    </a>
+    <a [routerLink]="['/listado']" [queryParams]= "{ condition : 'usado'}" mat-flat-button class="btn btn-primary">
+        <img src="../../../../../assets/images/acc-usado.svg" class="icon-acc">
+        Usados
+    </a>
+    <a [routerLink]="['/guia-de-precios']" mat-flat-button class="btn btn-primary">
+            <img src="../../../../../assets/images/acc-guia.svg" class="icon-acc">
+        Guía de Precios
+    </a>
+    <a mat-flat-button class="btn btn-primary">
+            <img src="../../../../../assets/images/acc-compara.svg" class="icon-acc">
+        Comparador
+    </a>
+
+</div>

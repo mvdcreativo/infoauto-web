@@ -1,0 +1,65 @@
+<div class="container">
+    <header class="header">
+        <nav-bar></nav-bar>
+    </header>
+    <main class="main">
+        <router-outlet ></router-outlet>
+        <h1>¿Cuánto cuesta mi auto en Uruguay?</h1>
+        <h2>Con esta herramienta, te ayudamos a descubrir precios de todo tipo de vehículos en Uruguay. Cotiza tu
+            vehículo y conoce el precio real en el mercado. Avaluar tu auto puede ayudarte a determinar el precio a la
+            hora de comprar o vender.
+        </h2>
+        <div class="searcher">
+            <form [formGroup]="formSearch" (ngSubmit)="onSubmit()">
+                <div class="row1">
+                    <mat-form-field class="category">
+                        <mat-label>Tipo Vehículo</mat-label>
+                        <mat-select formControlName="category" [(value)]="categoryId"
+                            (selectionChange)="changeCategory($event)">
+                            <mat-option *ngFor="let category of categories" [value]='category.id'>{{ category.name }}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+
+
+                    <mat-form-field class="brand">
+                        <mat-label>Marca</mat-label>
+                        <mat-select formControlName="brand" (selectionChange)="changeBrand($event)">
+                            <mat-option [value]=''>Ninguna marca</mat-option>
+                            <mat-option *ngFor="let brand of brands" [value]='brand.id'>{{ brand.name }}</mat-option>
+                        </mat-select>
+                    </mat-form-field>
+
+                    <mat-form-field class="model">
+                        <mat-label>Modelo</mat-label>
+                        <mat-select formControlName="model">
+                            <mat-option>Ningún modelo</mat-option>
+                            <mat-option *ngFor="let model of models" [value]='model.id'>{{ model.name }}</mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                    <mat-form-field class="year">
+                        <mat-label>Año</mat-label>
+                        <mat-select formControlName="year">
+                            <mat-option>Todos</mat-option>
+                            <mat-option *ngFor="let ano of anos" [value]='ano.value'>{{ ano.option}}</mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                    <mat-form-field class="recorrido">
+                        <mat-label>km recorridos</mat-label>
+                        <mat-select formControlName="kms">
+                            <mat-option>Todos</mat-option>
+                            <mat-option *ngFor="" [value]=''></mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </div>
+
+                <button class="btn-buscar btn-primary" mat-flat-button>Cotizar</button>
+            </form>
+        </div>
+
+        
+    </main>
+</div>
+<section class="footer">
+    <footer-component></footer-component>
+</section>

@@ -1,0 +1,38 @@
+.content{
+    padding: 1rem;
+    color: gray;
+    a{
+        color: gray;
+        &:hover{
+            color: #575757;
+        }
+    }
+    .list{
+        .list-item{
+            color: gray;
+            display: grid;
+            grid-template-columns: 1fr 5fr;
+            align-items: center;
+            .sub-list{
+                grid-column-start: 2;
+                grid-column-end: 3;
+                padding-left: 1rem;
+                padding: 0.5rem;
+                font-size: 0.9em;
+                .item-sublist{
+                    padding:0.3rem;
+
+                }
+            }
+        }
+    }
+    .mat-divider{
+        margin-bottom: 1rem;
+        margin-top: 1rem;
+    }
+    .title{
+        display: grid;
+        grid-template-columns: 1fr 5fr;
+        align-items: center;
+    }
+}

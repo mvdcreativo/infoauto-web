@@ -1,0 +1,30 @@
+<h1 mat-dialog-title>Entrar</h1>
+
+<div mat-dialog-content>
+  <mat-horizontal-stepper linear #stepper>
+    <mat-step [stepControl]="formStep1">
+      <form [formGroup]="formStep1">
+        <!-- <ng-template matStepLabel>Fill out your name</ng-template> -->
+        <mat-form-field class="mail">
+          <input matInput placeholder="Correo electrónico" formControlName="email" type="email" >
+        </mat-form-field>
+        <div class="actions">
+          <button class="btn-primary next" mat-button matStepperNext>Coninuar</button>
+        </div>
+      </form>
+    </mat-step>
+
+    <mat-step [stepControl]="formStep2">
+      <form [formGroup]="formStep2">
+        <!-- <ng-template matStepLabel>Fill out your address</ng-template> -->
+        <mat-form-field class="pass">
+          <input matInput placeholder="Contraseña" formControlName="password" type="password" >
+        </mat-form-field>
+        <div class="actions">
+          <button class="btn-primary next" mat-button matStepperNext>Entrar</button>
+          <button class="a-primary back" matStepperPrevious>Cambiar de cuenta</button>
+        </div>
+      </form>
+    </mat-step>
+  </mat-horizontal-stepper>
+</div>

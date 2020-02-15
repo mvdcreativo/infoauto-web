@@ -1,0 +1,84 @@
+mat-form-field{
+    background-color: transparent;
+}
+.content{
+    // position: fixed;
+
+    margin-top: 30px;
+    padding-left: 1rem;
+    color: darkslategray;
+    box-sizing: border-box;
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: auto 3rem auto;
+    row-gap: 1rem;
+    padding-bottom: 1rem;
+    .filters-selected{
+        width: 100%;
+        display: grid;
+        align-content: center;
+
+    }
+    .res-total{
+        width: 100%;
+        font-weight: 500;
+        font-size: 1em;
+        margin-bottom: 1rem;
+    }
+    .item{
+        h6{
+            font-weight: 300;
+            font-size: 1em;
+        }
+        padding-bottom: 2rem;
+        span{
+            font-size: 0.7em;
+            font-weight: 200; 
+        }
+        ul{
+            
+            a{
+                color: darkslategray;
+            }
+            li .item-side-bar{
+                padding-left: 1rem;
+                font-size: 0.7em;
+                font-weight: 200;
+            }
+
+        }
+        .card-float{
+            position: relative;
+            width: 25vw;
+            height: auto;
+            display: grid;
+            // background-color: aqua;
+            .close{
+                text-align: right;
+                mat-icon{
+
+                    cursor: pointer;
+                }
+            
+            }
+            ul{
+                display: grid;
+                grid-template-columns: repeat(3,1fr);
+                
+            }
+
+        }
+        .ano-d, .price-d{
+            width: 30%;
+            padding: 5px;
+            font-size: 0.7em;
+        }
+        .ano-h, .price-h{
+            width: 30%;
+            padding: 5px;
+            font-size: 0.7em;
+
+        }
+    }
+}

@@ -1,0 +1,33 @@
+<div class="content">
+    <div class="input">
+      <form [formGroup]="formSearch" (ngSubmit)="onSubmit()">
+        <div class="form-content">
+          <div class="category">
+              <mat-form-field *ngIf="categories" appearance="none" class="select">
+                  <mat-select formControlName="category_id">
+                      <mat-option *ngFor="let category of categories" [value]='category.id'>{{ category.name }}</mat-option>
+                  </mat-select>
+              </mat-form-field>
+            </div>
+            <div class="input">
+
+                <mat-form-field  appearance="none" class="input-text">
+                    <input matInput class="" type="text" placeholder="Ingrese marca, modelo o lo que desee buscar. " formControlName="searcher">
+                    <button mat-button matSuffix mat-icon-button aria-label="Clear">
+                      <mat-icon>close</mat-icon>
+                    </button>
+                  </mat-form-field>
+              <!-- <input class="input-text" type="text" placeholder="Ingrese marca, modelo o lo que desee buscar. " formControlName="searcher"> -->
+              <!-- <mat-autocomplete #auto="matAutocomplete">
+                <mat-option *ngFor="let street of filteredStreets | async" [value]="street">
+                  {{street}}
+                </mat-option>
+              </mat-autocomplete> -->
+            </div>
+            <div class="button">
+              <button class="btn_search" type="submit"><i class="material-icons">search</i></button>
+            </div>
+        </div>
+        </form>
+    </div>
+</div>

@@ -1,0 +1,35 @@
+.content {
+  padding: 1rem;
+  color: gray;
+}
+.content a {
+  color: gray;
+}
+.content a:hover {
+  color: #575757;
+}
+.content .list .list-item {
+  color: gray;
+  display: grid;
+  grid-template-columns: 1fr 5fr;
+  align-items: center;
+}
+.content .list .list-item .sub-list {
+  grid-column-start: 2;
+  grid-column-end: 3;
+  padding-left: 1rem;
+  padding: 0.5rem;
+  font-size: 0.9em;
+}
+.content .list .list-item .sub-list .item-sublist {
+  padding: 0.3rem;
+}
+.content .mat-divider {
+  margin-bottom: 1rem;
+  margin-top: 1rem;
+}
+.content .title {
+  display: grid;
+  grid-template-columns: 1fr 5fr;
+  align-items: center;
+}

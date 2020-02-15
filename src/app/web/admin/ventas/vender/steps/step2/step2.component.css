@@ -1,0 +1,14 @@
+ul {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+}
+ul li {
+  font-size: 0.8em;
+  padding: 0.5rem;
+}
+.content-btns {
+  margin-top: 2rem;
+}
+.content-btns .nex {
+  margin-left: 1rem;
+}
