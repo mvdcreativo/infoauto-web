@@ -22,6 +22,7 @@ export interface Product {
     attributes?: Attributes[];
     extras?: Extras[];
     images?: Images[];
+    neighborhood_id?: number;
 }
 
 export interface Attributes {

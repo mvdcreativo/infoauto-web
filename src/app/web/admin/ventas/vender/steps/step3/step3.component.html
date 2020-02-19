@@ -1,27 +1,35 @@
-<h2>Fotos del Vehículo</h2>
-        <div class="images">
-            <div class="image" *ngFor="let image of images; let i = index">
-                <span *ngIf="image.id" class="ico-delete">
-                    <a (click)="removeImage(i)"><i class="material-icons">remove_circle</i></a>
-                </span>
-                <label for="image">
-                    <img class="img" [src]="image.url" alt="">
-                </label>
-                <input type="file" (change)="uploadImage($event, i)" hidden id="image" multiple>
-            </div>
+<mat-card *ngIf="publication" >
+    <!-- <mat-card-header> -->
+        <mat-card-title>Paso 3 - Imágenes y extras datos extra del Vehículo</mat-card-title>
+    <!-- </mat-card-header> -->
+    <div class="content">
+
+        <div class="upload">
+            <images-drag-drop [images]="publication.images" [publication]= "publication"></images-drag-drop>
         </div>
-        <form [formGroup]="formStep3" (ngSubmit)="submitStep3()">
-            <!-- <div class="extras">
-                <h2>Selecciona las opciones</h2>
-                <ul >
-                    <li formArrayName="extras" *ngFor="let ext of extraIterable; let i = index">
-                        <mat-checkbox [formControlName]="i">{{ extras[i].name }}</mat-checkbox>
-                    </li>
-                </ul>
-            </div> -->
+
+        <!-- ////extras -->
+
+
+        
+        <div class="extras">
+            <mat-card-header>
+                <mat-card-title>Cuentanos sobre tu vehículo</mat-card-title>
+            </mat-card-header>
+
+            <checkbox-group [options]="checkboxes" [selectedValues]="publicationExtras" (toggle)="attCheck($event,0)">
+            </checkbox-group>
+    
+        </div>
+
+        
+        <form [formGroup]="formStep3" >
+
+            <mat-card-header>
+                <mat-card-title>Cuentanos sobre tu vehículo</mat-card-title>
+            </mat-card-header>
             <div class="description">
-                <h2>Cuentanos sobre tu vehículo</h2>
-                <mat-form-field class="text-description">
+                <mat-form-field class="text-description" appearance="outline">
                     <textarea formControlName="description"  matInput #description maxlength="1000" placeholder="Descripción"></textarea>
                     <mat-hint align="start"><strong>Por su seguridad no introdusca datos personales</strong> </mat-hint>
                     <mat-hint align="end">{{description.value.length}} / 1000</mat-hint>
@@ -29,6 +37,9 @@
             </div>
             <div class="content-btns"> 
                 <button mat-button>Atras</button>
-                <button class="btn-second nex" mat-button [disabled]="!formStep3.valid" (click)="submitStep3" >Siguiente</button>
+                <button class="btn-second nex" mat-button [disabled]="!formStep3.valid" (click)="submitStep3()" >Siguiente</button>
             </div>
         </form>
+
+    </div>
+</mat-card>

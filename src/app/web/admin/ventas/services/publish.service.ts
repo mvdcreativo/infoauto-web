@@ -1,18 +1,19 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { BehaviorSubject, Observable } from 'rxjs';
-import { take } from 'rxjs/operators';
+import { take, map } from 'rxjs/operators';
 
 import { environment } from 'src/environments/environment';
 import { Product } from '../../../../interfaces/product';
 import { Router, ActivatedRoute, Params } from '@angular/router';
+import { Image } from 'src/app/interfaces/resultado';
 
 @Injectable({
   providedIn: 'root'
 })
 export class PublishService {
 
-  private publicationSubject$: BehaviorSubject<Product> = new BehaviorSubject<Product>(null);
+  public publicationSubject$: BehaviorSubject<Product> = new BehaviorSubject<Product>(null);
   public publication: Observable<Product>;
 
   constructor(
@@ -60,9 +61,9 @@ export class PublishService {
   }
 
   ///Actualiza publicación con cada Step que la llama
-  updatePublication(data: Product, nexStep: string) {
+  updatePublication(data: Product, Step: string) {
     const publicationId = this.publicationValue.id
-
+    const nexStep = `${Step}/${publicationId}`
     return this._http.put<Product>(`${environment.API}product/${publicationId}`, data).pipe(
       take(1)
     ).subscribe(
@@ -75,7 +76,8 @@ export class PublishService {
     )
   }
 
-  uploadImage(publicationID: number, files: FileList, index?: number) {
+
+  uploadProductImage(publicationID: number, files: FileList, index?: number) {
 
     const formData = new FormData();
     console.log(files);
@@ -90,11 +92,25 @@ export class PublishService {
     return this._http.post(`${environment.API}product/${publicationID}`, formData, {
       observe: 'events',
       reportProgress: true
-    });
+    })
+  }
+
+  updateImage(data){
+    data.map(
+      d => this._http.put(`${environment.API}image/${d.id}`, d).pipe(take(1)).subscribe()
+    )
   }
 
   removeImageId(imageID) {
-    return this._http.delete(`${environment.API}image/${imageID}`);
+    return this._http.delete<Image>(`${environment.API}image/${imageID}`)
+    .pipe(take(1))
+    .subscribe(
+      
+      res=> {
+        console.log(res);
+        this.publicationSubject$.next(res.products[0])
+      }
+    );
   }
   // getPublication(){
   //   return

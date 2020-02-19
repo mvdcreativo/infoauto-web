@@ -10,6 +10,7 @@ import { Step1Component } from './vender/steps/step1/step1.component';
 import { Step2Component } from './vender/steps/step2/step2.component';
 import { Step3Component } from './vender/steps/step3/step3.component';
 import { Step4Component } from './vender/steps/step4/step4.component';
+import { ImagesDragDropComponent } from './vender/steps/step3/images-drag-drop/images-drag-drop.component';
 
 
 
@@ -20,7 +21,9 @@ import { Step4Component } from './vender/steps/step4/step4.component';
     Step1Component,
     Step2Component,
     Step3Component,
-    Step4Component
+    Step4Component,
+    ImagesDragDropComponent,
+    
   ],
   imports: [
     CommonModule,

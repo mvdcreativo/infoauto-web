@@ -272,18 +272,7 @@ private getImages(){
     } 
   
 }
- removeImage(index: number){
-  const image = this.images[index]
-  this._publishService.removeImageId(image.id).subscribe(
-    res => {
-      
-      this.publication.images.splice(index,1);
-      this.getImages();
-      console.log(res);
-      
-    }
-  )
-}
+
 
 
 }

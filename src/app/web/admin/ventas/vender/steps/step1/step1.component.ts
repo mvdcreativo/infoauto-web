@@ -3,7 +3,7 @@ import { SearchService } from 'src/app/services/search.service';
 import { PublishService } from 'src/app/web/admin/ventas/services/publish.service';
 import { AuthService } from 'src/app/auth/auth.service';
 import { FormBuilder, Validators, FormGroup } from '@angular/forms';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute, Params } from '@angular/router';
 import { User } from 'src/app/interfaces/user';
 import { VehicleCategory, Brand, VehicleModel, VehicleSubModel, NameConcat } from 'src/app/interfaces/resultado';
 import { take } from 'rxjs/operators';
@@ -31,18 +31,67 @@ export class Step1Component implements OnInit {
   currencies: any;
   priceCondition: any;
   priceConditions: any;
+  publication: Product;
 
   constructor(
     private _settingApiServises: SettingApiService,
     private _publishService: PublishService,
     private _authService: AuthService,
     private _fb: FormBuilder,
-    private route: Router
+    private route: Router,
+    private activateRoute: ActivatedRoute
   ) { }
 
   ngOnInit() {
+    this.activateRoute.params.subscribe(
+      (param: Params) => {
+        if (param.id) {
+          this._publishService.getPublicationById(param.id)
+          this.getPublication();
+        } else {
+          this.route.navigate(['mi-cuenta/ventas/vender/step1'])
+        }
+        // console.log(param.id);
+        
+      }
+    )
     this.generaFormStep1()
   }
+
+  private getPublication() {
+
+
+    this._publishService.publication.subscribe(
+      res =>{ 
+        this.publication = res
+
+        if(this.formStep1){
+          this.selectModel(this.publication.brand_id);
+          this.selectSubModel(this.publication.vehicle_model_id);
+
+          this.formStep1.setValue({
+            user_id: this.publication.user_id,
+            vehicle_category_id: this.publication.vehicle_category_id,
+            brand_id: this.publication.brand_id,
+            vehicle_model_id: this.publication.vehicle_model_id,
+            vehicle_sub_model_id: this.publication.vehicle_sub_model_id,
+            year: this.publication.year,
+            price: this.publication.price,
+            condition_id: this.publication.condition_id,
+            km: this.publication.km,
+            state: this.publication.state,
+            currency_id: this.publication.currency_id,
+            city_id: this.publication.city_id,
+            neighborhood_id: this.publication.neighborhood_id,
+            price_condition_id: this.publication.price_condition_id,
+          });
+
+        }
+
+      }
+    )
+  }
+
 
   private generaFormStep1() {
     const user: User = this._authService.currentUserValue.user
@@ -55,7 +104,7 @@ export class Step1Component implements OnInit {
       vehicle_sub_model_id: [null],
       year: [null, Validators.required],
       price: [0, Validators.required],
-      condition: [null, Validators.required],
+      condition_id: [null, Validators.required],
       km: [0],
       state: ['PEN'],
       currency_id: [2, Validators.required],
@@ -112,12 +161,12 @@ export class Step1Component implements OnInit {
   }
 
   changeCategory(e) {
-    this.categoryId = e.value;
+    this.categoryId = e;
     this.selectBrand();
     // console.log(this.categoryId);
   }
   changeBrand(e) {
-    if (e.value === undefined) {
+    if (e === undefined) {
       this.models = [];
       console.log(this.formStep1.value);
 
@@ -125,7 +174,7 @@ export class Step1Component implements OnInit {
         vehicle_model_id: ''
       })
     } else {
-      this.brandId = e.value;
+      this.brandId = e;
       this.formStep1.patchValue({
         vehicle_model_id: ''
       })
@@ -135,7 +184,7 @@ export class Step1Component implements OnInit {
   }
   changeModel(e) {
     let modelId;
-    if (e.value === undefined) {
+    if (e === undefined) {
       this.subModels = [];
       console.log(this.formStep1.value);
 
@@ -143,7 +192,7 @@ export class Step1Component implements OnInit {
         vehicle_sub_model_id: ''
       })
     } else {
-      modelId = e.value;
+      modelId = e;
       this.formStep1.patchValue({
         vehicle_sub_model_id: ''
       })
@@ -196,6 +245,7 @@ export class Step1Component implements OnInit {
   selectCondition() {
     this.conditions = this._settingApiServises.getCondition()
   }
+
   onConditionChanged({value}){
     if (value === 2) {
       this.formStep1.get('km').enable()

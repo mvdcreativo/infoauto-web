@@ -1,15 +1,40 @@
-ul{
-    display: grid;
-    grid-template-columns: repeat(4 , 1fr);
-    li {
-        font-size: 0.8em;
-        padding: 0.5rem;
+.mat-card{
+    padding: 1rem;
+    .content{
+        padding: 1rem;
+        .radio-group{
+            font-size: 12px;
+            display: grid;
+            grid-template-columns: repeat(5 , 1fr);
+            padding-bottom: 1rem;
+            
+        
+            .radio-button {
+                margin: 5px;
+                padding: 0.5rem;
+            }
+        
+        }
+        .mat-divider, .mat-divider-horizontal{
+            width: 100%;
+            position: relative;
+            padding-left: 1rem!important;
+        }
+
     }
-}
-.content-btns{
-    margin-top: 2rem;
-    .nex{
-        margin-left: 1rem
+    
+    
+    
+    
+
+    .content-btns{
+        margin-top: 2rem;
+        .nex{
+            margin-left: 1rem
+        }
+    
     }
 
 }
+
+

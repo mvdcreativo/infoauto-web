@@ -1,7 +1,12 @@
-<div class="container-ventas">
+
+<mat-card>
+    <mat-card-header>
+        <mat-card-title>Paso 1 - Selecciona un Vehículo</mat-card-title>
+    </mat-card-header>
+        
+    <div class="container-ventas">
     <form class="form" [formGroup]="formStep1" (ngSubmit)="submitStep1()">
         <div class="content-form">
-            <div>Informacion del Vehículo</div>
             <div class="searcher">
                 <mat-form-field class="category">
                     <mat-label>Tipo Vehículo</mat-label>
@@ -16,15 +21,15 @@
                 <mat-form-field class="brand">
                     <mat-label>Marca</mat-label>
         
-                    <mat-select formControlName="brand_id" (selectionChange)="changeBrand($event)">
-                        <mat-option [value]=''>Ninguna marca</mat-option>
+                    <mat-select formControlName="brand_id" (selectionChange)="changeBrand($event.value)">
+                        <mat-option>Ninguna marca</mat-option>
                         <mat-option *ngFor="let brand of brands" [value]='brand.id'>{{ brand.name }}</mat-option>
                     </mat-select>
                 </mat-form-field>
         
                 <mat-form-field class="model">
                     <mat-label>Modelo</mat-label>
-                    <mat-select formControlName="vehicle_model_id" (selectionChange)="changeModel($event)">
+                    <mat-select formControlName="vehicle_model_id" (selectionChange)="changeModel($event.value)">
                         <mat-option>Ningún modelo</mat-option>
                         <mat-option *ngFor="let model of models" [value]='model.id'>{{ model.name }}</mat-option>
                     </mat-select>
@@ -45,7 +50,7 @@
                 </mat-form-field>
                 <mat-form-field class="condition">
                     <mat-label>Condición</mat-label>
-                    <mat-select formControlName="condition"  (selectionChange)= "onConditionChanged($event)">
+                    <mat-select formControlName="condition_id"  (selectionChange)= "onConditionChanged($event)">
                         <mat-option>Todos</mat-option>
                         <mat-option *ngFor="let condition of conditions | async" [value]='condition.id'>{{ condition.name }}</mat-option>
                     </mat-select>
@@ -85,3 +90,4 @@
     </form>
 
 </div>
+</mat-card>

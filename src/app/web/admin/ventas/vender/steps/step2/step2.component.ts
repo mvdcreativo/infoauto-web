@@ -14,12 +14,10 @@ import { CheckboxItem } from 'src/app/shared/checkbox-group/CheckboxItem';
   templateUrl: './step2.component.html',
   styleUrls: ['./step2.component.scss']
 })
-export class Step2Component implements OnInit, OnChanges {
+export class Step2Component implements OnInit {
 
   formStep2: FormGroup;
   attributes: any;
-  attrIterable: any = [];
-  publication_id: any;
   subAttr: any;
   attrCheckboxes: any;
   attrCheckboxesChildren: any;
@@ -31,8 +29,6 @@ export class Step2Component implements OnInit, OnChanges {
   constructor(
     private _settingApiServises: SettingApiService,
     private _publishService: PublishService,
-    private _authService: AuthService,
-    private _fb: FormBuilder,
     private route: Router,
     private activateRoute: ActivatedRoute
     ) { 
@@ -53,24 +49,13 @@ export class Step2Component implements OnInit, OnChanges {
       }
     )
       this.selectAttributes();
+
     
 
   }
 
-  ngOnChanges(){
-
-  }
 
 
-  // private generaFormStep2() {
-
-
-  //   this.formStep2 = this._fb.group({
-  //     // attributes: new FormArray([])
-  //   });
-  //   this.selectAttributes();
-
-  // }
 
   ////////SUBMIT
   submitStep2() {
@@ -84,19 +69,6 @@ export class Step2Component implements OnInit, OnChanges {
     
     this.udatePublication(data);
 
-    // console.log(this.formStep2.value);
-
-
-    //     const selectedAttr = this.formStep2.value.attributes
-    //       .map((v, i) => v ? this.attributes[i].id : null)
-    //       .filter(v => v !== null);
-
-    // console.log(selectedAttr);
-
-    //     let data: Product = {attributes: null}
-    //     console.log(data);
-    //     data.attributes = selectedAttr
-    //     this.udatePublication(data);
 
 
   }
@@ -107,16 +79,7 @@ export class Step2Component implements OnInit, OnChanges {
     console.log(data);
     const nexStep = "mi-cuenta/ventas/vender/step3"
     return this._publishService.updatePublication(data, nexStep)
-    // .subscribe(
-    //   res => {
-    //     this.publication = res
-    //     this.publicationID = res.id
-    //     console.log(this.publicationID);
 
-    //     console.log(this.publication)
-    //     this.getImages();
-    //   }
-    // )
   }
 
   selectAttributes() {
@@ -143,7 +106,8 @@ export class Step2Component implements OnInit, OnChanges {
                 let children = 
                   {
                     title: x.name,
-                    attributes: x.attributes.map(x=> new CheckboxItem(x.id, x.name))
+                    attributes: x.attributes.map(x=> new CheckboxItem(x.id, x.name)),
+                    multi_option: x.multi_option
                   }
                 
 
@@ -151,7 +115,6 @@ export class Step2Component implements OnInit, OnChanges {
               }
               
             )
-              // console.log(this.attrCheckboxesChildren);
           
           // this.addCheckboxesAttributes()
           this.selectValues()
@@ -162,12 +125,26 @@ export class Step2Component implements OnInit, OnChanges {
   }
 
   attCheck(event, group) {
-    console.log(event);
-// 
     this.groupCheckbox[group] = event;
+  }
 
-    console.log(this.groupCheckbox);
 
+  value(valores,i){
+    // console.log(this.publicationAttributes);
+
+    const n = valores.map(
+                a => { 
+                  const ch = this.publicationAttributes.find(b => b === a.value)
+                  // console.log(ch);
+                  return ch
+                  
+                }
+              )
+    const che = n.filter(x=> x !== undefined)
+    // this.attCheck(che[0], i)
+
+    return che[0];
+      
   }
 
 
@@ -176,8 +153,10 @@ export class Step2Component implements OnInit, OnChanges {
     const values = this._publishService.publicationValue;
     if(values){
       this.publicationAttributes = values.attributes.map(v=> v.id)
+      console.log(this.publicationAttributes);
       
     }else{
+      
       this.publicationAttributes = []
     }
     

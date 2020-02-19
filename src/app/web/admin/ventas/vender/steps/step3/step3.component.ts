@@ -1,8 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, FormArray, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { PublishService } from '../../../services/publish.service';
-import { AuthService } from 'src/app/auth/auth.service';
-import { HttpEvent, HttpEventType } from '@angular/common/http';
+import { take } from 'rxjs/operators';
+import { Params, Router, ActivatedRoute } from '@angular/router';
+import { Product } from 'src/app/interfaces/product';
+import { SettingApiService } from 'src/app/web/admin/setting-api/services/setting-api.service';
+import { CheckboxItem } from 'src/app/shared/checkbox-group/CheckboxItem';
 
 @Component({
   selector: 'app-step3',
@@ -12,102 +15,141 @@ import { HttpEvent, HttpEventType } from '@angular/common/http';
 export class Step3Component implements OnInit {
   formStep3: FormGroup;
   info: any;
-  extras: any;
+  extras: any[];
   publicationID: number;
-  publication: any;
   progress: number;
   images: any;
+  extraIterable: any;
+  publication: Product;
+  checkboxes: any;
+  publicationExtras: number[];
+  groupCheckbox: any;
 
   constructor(
     private _fb: FormBuilder,
     private _publishService: PublishService,
-    private _authService: AuthService,
+    private _settingApiServises: SettingApiService,
+    private route: Router,
+    private activateRoute: ActivatedRoute
+
   ) { }
 
   ngOnInit() {
+
+    this.activateRoute.params.subscribe(
+      (param: Params) => {
+        if (param.id) {
+          this._publishService.getPublicationById(param.id)
+          this.getPublication()
+        } else {
+          this.route.navigate(['mi-cuenta/ventas/vender/step1'])
+        }
+
+
+        this.selectExtras();
+      }
+    )
 
     this.generaFormStep3();
 
   }
 
-  private generaFormStep3(){
+  private getPublication() {
+    this._publishService.publication.subscribe(
+      res => this.publication = res
+    )
+
+  }
+
+  private generaFormStep3() {
     this.formStep3 = this._fb.group({
-      extras : new FormArray([]),
-      description : ['', Validators.required]
+      description: [null, Validators.maxLength(1000)]
     });
+
+
   }
 
-  submitStep3(){
-    const selectedExtras = this.formStep3.value.extras
-      .map((v, i) => v ? this.extras[i].id : null)
-      .filter(v => v !== null);
-      
-    console.log(selectedExtras);
+  submitStep3() {
+    const extras = this.groupCheckbox.flat()
+    console.log(extras);
+    const description = this.formStep3.controls.description.value
+    const data = {
+      'description': description,
+      'extras': extras,
+    }
+    this.udatePublication(data);
 
-    this.info.extras = selectedExtras;
-    this.info.description = this.formStep3.value.description
-    console.log(this.info);
-    // this.udatePublication();
   }
-  
 
 
 
-  uploadImage(e , index){
-    
-    if(e.target.files && e.target.files[0]){
-      const selectedFiles = <FileList>e.target.files;
-      
-      const fileNames = [];
-      // console.log(selectedFiles);
-      
-      // console.log(this.files);
-      
-      this._publishService.uploadImage(this.publicationID, selectedFiles, index)
+  udatePublication(data) {
+    console.log(data);
+    const nexStep = "mi-cuenta/ventas/vender/step4"
+    return this._publishService.updatePublication(data, nexStep)
+  }
+
+
+
+
+  selectExtras() {
+    this._settingApiServises.getExtras()
+      .pipe(
+        take(1)
+      )
       .subscribe(
-        (event: HttpEvent<Object>) => {
-          
-          // console.log(event);
-          if (event.type === HttpEventType.Response) {
-            console.log('Upload Concluído');
-            console.log(event.body);
-            this.publication = event.body;
-            this.getImages();
-          } else if (event.type === HttpEventType.UploadProgress) {
-            const percentDone = Math.round((event.loaded * 100) / event.total);
-            // console.log('Progresso', percentDone);
-            this.progress = percentDone;
-          }
+        (attr: any) => {
+          this.extras = attr
+          console.log(attr);
+
+          this.checkboxes = this.extras
+            .map(
+              x => {
+                return new CheckboxItem(x.id, x.name)
+              }
+            );
+
+
+          console.log(this.checkboxes);
+
+          // this.addCheckboxesAttributes()
+          this.selectValues()
+
         }
-      )
-    }
-    
+      );
   }
-private getImages(){
-  let imageLength = this.publication.images.length
-  
-  this.images = this.publication.images
-    for (let index = 0; index <= 15 - imageLength ; index++) {
-      this.images.push(
-          {
-            id: null,
-            url : "../../../../assets/images/no-image.svg",  
-          }
-      )
-          
-    } 
-  
-}
- removeImage(index: number){
-  const image = this.images[index]
-  this._publishService.removeImageId(image.id).subscribe(
-    res => {
-      
-      this.publication.images.splice(index,1);
-      this.getImages();
-      console.log(res);
-      
+
+
+  selectValues() {
+
+    const values = this._publishService.publicationValue;
+    if (values) {
+      this.publicationExtras = values.extras.map(v => v.id)
+      // console.log(this.publicationExtras);
+
+    } else {
+      this.publicationExtras = []
     }
-  )
-}
+
+    ////Valor Descripción
+    if (this.publication) {
+      const descriptionText = this.publication.description
+      this.formStep3.patchValue({
+        description: descriptionText
+      })
+
+    }
+
+  }
+
+  attCheck(event, group) {
+    console.log(event);
+    // 
+    this.groupCheckbox = event;
+
+    console.log(this.groupCheckbox);
+
+  }
+
+
 }

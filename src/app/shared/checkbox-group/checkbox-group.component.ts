@@ -36,6 +36,15 @@ export class CheckboxGroupComponent implements OnInit, OnChanges {
 
      this.toggle.emit(optionsChecked);
     });
+
+    if(this.options){
+      this.selectedValues.forEach(value => {
+       const index: number = this.options.findIndex(opt => opt.value === value); 
+       if (index >= 0) {
+         this.items.get(index.toString()).setValue(true);
+        }
+      });
+    }
   }
   
   ngOnChanges() {

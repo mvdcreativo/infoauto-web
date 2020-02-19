@@ -1,0 +1,73 @@
+mat-form-field {
+  background-color: transparent;
+}
+.content {
+  margin-top: 30px;
+  padding-left: 1rem;
+  color: #363636;
+  box-sizing: border-box;
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: auto 3rem auto;
+  row-gap: 1rem;
+  padding-bottom: 1rem;
+}
+.content .filters-selected {
+  width: 100%;
+  display: grid;
+  align-content: center;
+}
+.content .res-total {
+  width: 100%;
+  font-weight: 500;
+  font-size: 1em;
+  margin-bottom: 1rem;
+}
+.content .item {
+  padding-bottom: 2rem;
+}
+.content .item h6 {
+  font-weight: 300;
+  font-size: 1em;
+}
+.content .item span {
+  font-size: 0.7em;
+  font-weight: 200;
+}
+.content .item ul a {
+  color: #363636;
+}
+.content .item ul li .item-side-bar {
+  padding-left: 1rem;
+  font-size: 0.7em;
+  font-weight: 200;
+}
+.content .item .card-float {
+  position: relative;
+  width: 25vw;
+  height: auto;
+  display: grid;
+}
+.content .item .card-float .close {
+  text-align: right;
+}
+.content .item .card-float .close mat-icon {
+  cursor: pointer;
+}
+.content .item .card-float ul {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+}
+.content .item .ano-d,
+.content .item .price-d {
+  width: 30%;
+  padding: 5px;
+  font-size: 0.7em;
+}
+.content .item .ano-h,
+.content .item .price-h {
+  width: 30%;
+  padding: 5px;
+  font-size: 0.7em;
+}

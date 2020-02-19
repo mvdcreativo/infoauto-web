@@ -1,3 +1,4 @@
+import { Product } from './product';
 
     export interface Brand {
         id: number;
@@ -45,6 +46,7 @@
         url: string;
 
         pivot: Pivot;
+        products?:Product
     }
 
     export interface City {

@@ -1,0 +1,95 @@
+.container {
+  display: grid;
+  width: 100%;
+  grid-template-columns: 150px auto;
+}
+.container .upload {
+  width: 150px;
+  box-sizing: border-box;
+}
+.container .upload label {
+  display: block;
+  width: 100%;
+  height: 100%;
+  border: 1px #ccc;
+  border-style: dashed;
+  border-radius: 5px;
+  cursor: pointer;
+}
+.container .upload label .image-input {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-content: center;
+}
+.container .upload label .image-input img {
+  padding: 0.5rem;
+  width: 100%;
+}
+.container .instructions {
+  width: 100%;
+  height: 100%;
+  background-image: url(../../../../../../../../assets/images/dragdrop.svg);
+  background-repeat: no-repeat;
+  background-position: left;
+  background-position-x: 10%;
+}
+.list {
+  min-width: 80px;
+  min-height: 80px;
+  display: flex;
+  flex-direction: row;
+  background: white;
+  border-radius: 4px;
+  overflow: hidden;
+  overflow-x: auto;
+  padding: 1rem;
+  box-sizing: border-box;
+}
+.box {
+  box-sizing: border-box;
+  float: left;
+  width: 80px;
+  height: 80px;
+  margin: 2px;
+  padding: 3px;
+  border: solid 1px #ccc;
+  border-radius: 5px;
+  color: rgba(0, 0, 0, 0.87);
+  box-sizing: border-box;
+  cursor: move;
+  background: white;
+  position: relative;
+}
+.box img {
+  width: 72px;
+  height: 72px;
+  object-fit: cover;
+  z-index: 100;
+}
+.box img:hover {
+  opacity: 0.5;
+}
+.box .delete-image {
+  cursor: pointer;
+  position: absolute;
+  top: 3px;
+  right: 3px;
+  z-index: 200;
+}
+.cdk-drag-preview {
+  box-sizing: border-box;
+  border-radius: 4px;
+  box-shadow: 0 5px 5px -3px rgba(0, 0, 0, 0.2),
+    0 8px 10px 1px rgba(0, 0, 0, 0.14), 0 3px 14px 2px rgba(0, 0, 0, 0.12);
+}
+.cdk-drag-placeholder {
+  opacity: 0;
+}
+.cdk-drag-animating {
+  transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
+}
+.list.cdk-drop-list-dragging .box:not(.cdk-drag-placeholder) {
+  transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
+}

@@ -1,15 +1,15 @@
 .content{
     padding: 1rem;
-    color: gray;
+    color: #363636;
     a{
-        color: gray;
+        color: #363636;
         &:hover{
-            color: #575757;
+            color: #363636;
         }
     }
     .list{
         .list-item{
-            color: gray;
+            color: #363636;
             display: grid;
             grid-template-columns: 1fr 5fr;
             align-items: center;

@@ -1,4 +1,5 @@
 /* You can add global styles to this file, and also import other style files */
+@import '@angular/material/prebuilt-themes/deeppurple-amber.css';
 
 @import './assets/scss/variables.scss';
 .mat-footer-row, .mat-header-row, .mat-row {
@@ -27,6 +28,37 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
     padding: 0px!important;
     margin: 0px!important;
 }
+////modifica tema Material
+.mat-checkbox-indeterminate.mat-accent .mat-checkbox-background, .mat-checkbox-checked.mat-accent .mat-checkbox-background{
+    background-color: $primary;
+}
+.mat-ripple-element{
+    color: $primary;
+}
+
+.mat-radio-button.mat-accent.mat-radio-checked .mat-radio-outer-circle {
+    border-color: $primary;
+}
+.mat-radio-button.mat-accent .mat-radio-inner-circle, .mat-radio-button.mat-accent .mat-radio-ripple .mat-ripple-element:not(.mat-radio-persistent-ripple), .mat-radio-button.mat-accent.mat-radio-checked .mat-radio-persistent-ripple, .mat-radio-button.mat-accent:active .mat-radio-persistent-ripple {
+    background-color: $primary;
+}
+
+.mat-primary .mat-option.mat-selected:not(.mat-option-disabled) {
+    color:$primary;
+}
+.mat-primary .mat-option.mat-selected:not(.mat-option-disabled) {
+    color: $primary;
+}
+
+//input
+.mat-form-field.mat-focused .mat-form-field-ripple {
+    background-color: $secondary;
+}
+.mat-form-field.mat-focused .mat-form-field-ripple {
+    background-color: $secondary;
+}
+
+////////////////////
 
 .center{
     display: grid;

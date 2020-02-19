@@ -1,25 +1,45 @@
-<checkbox-group [options]="attrCheckboxes" [selectedValues]="publicationAttributes" (toggle)="attCheck($event,0)">
-</checkbox-group>
+<mat-card>
+    <!-- <mat-card-header> -->
+        <mat-card-title>Paso 2 - Ficha Técnica</mat-card-title>
+    <!-- </mat-card-header> -->
+    <div class="content">
+        <checkbox-group [options]="attrCheckboxes" [selectedValues]="publicationAttributes" (toggle)="attCheck($event,0)">
+        </checkbox-group>
+        <mat-divider></mat-divider>
 
-<div *ngFor="let item of attrCheckboxesChildren; let i=index">
-    
-    <label id="example-radio-group-label">{{ item.title }}</label>
-    
-    <mat-radio-group aria-labelledby="example-radio-group-label">
-        <mat-radio-button class="example-radio-button" *ngFor="let season of item.attributes" [value]="season">
-            {{season}}
-        </mat-radio-button>
-    </mat-radio-group>
- 
-    <!-- <h5>{{ item.title }}</h5>
+    </div>
+    <div class="content" *ngFor="let item of attrCheckboxesChildren; let i=index">
+        <!-- <h5>{{ item.title }}</h5>
     <checkbox-group [options]="item.attributes" [selectedValues]="publicationAttributes" (toggle)="attCheck($event, i+1)">
     </checkbox-group> -->
-</div>
 
 
+        <ng-container *ngIf="item.multi_option === 's'; else elseTemplate">
 
+            <label>{{ item.title }}</label>
+            <mat-radio-group class="radio-group" [value]="value(item.attributes, i+1)">
+                <mat-radio-button class="radio-button" *ngFor="let sItem of item.attributes" [value]="sItem.value"
+                    (change)="attCheck($event.value, i+1)">
+                    {{sItem.label}}
+                </mat-radio-button>
+            </mat-radio-group>
+            <mat-divider [inset]="true"></mat-divider>
 
-<div class="content-btns">
-    <button mat-button>Atras</button>
-    <button class="btn-second nex" mat-button (click)="submitStep2()">Siguiente</button>
-</div>
+        </ng-container>
+
+        <ng-template #elseTemplate>
+
+            <label>{{ item.title }}</label>
+            <checkbox-group [options]="item.attributes" [selectedValues]="publicationAttributes"
+                (toggle)="attCheck($event, i+1)">
+            </checkbox-group>
+            <mat-divider></mat-divider>
+        </ng-template>
+    </div>
+
+    <div class="content-btns">
+        <button mat-button>Atras</button>
+        <button class="btn-second nex" mat-button (click)="submitStep2()">Siguiente</button>
+    </div>
+
+</mat-card>
