@@ -1,10 +1,7 @@
 import { Component, OnInit, Attribute, OnChanges } from '@angular/core';
-import { SearchService } from 'src/app/services/search.service';
 import { PublishService } from '../../../services/publish.service';
-import { AuthService } from 'src/app/auth/auth.service';
-import { FormBuilder, FormGroup, FormArray, FormControl } from '@angular/forms';
 import { Router, ActivatedRoute, Params } from '@angular/router';
-import { Product, Attributes } from 'src/app/interfaces/product';
+import { Product } from 'src/app/interfaces/product';
 import { take } from 'rxjs/operators';
 import { SettingApiService } from 'src/app/web/admin/setting-api/services/setting-api.service';
 import { CheckboxItem } from 'src/app/shared/checkbox-group/CheckboxItem';
@@ -16,13 +13,13 @@ import { CheckboxItem } from 'src/app/shared/checkbox-group/CheckboxItem';
 })
 export class Step2Component implements OnInit {
 
-  formStep2: FormGroup;
   attributes: any;
   subAttr: any;
   attrCheckboxes: any;
   attrCheckboxesChildren: any;
   groupCheckbox: any=[];
   publicationAttributes: any;
+  publication: Product;
 
 
 
@@ -40,21 +37,29 @@ export class Step2Component implements OnInit {
       (param: Params) => {
         if (param.id) {
           this._publishService.getPublicationById(param.id)
-          
+          this.getPublication()
         } else {
-          this.route.navigate(['mi-cuenta/ventas/vender/step1'])
+          this.route.navigate(['/vender/step1'])
         }
         // console.log(param.id);
         
+        this.selectAttributes();
       }
     )
-      this.selectAttributes();
 
     
 
   }
 
+  private getPublication() {
+    this._publishService.publication.subscribe(
+      res => {
+        this.publication = res
+        this.selectValues()
+      }
+    )
 
+  }
 
 
   ////////SUBMIT
@@ -77,9 +82,14 @@ export class Step2Component implements OnInit {
 
   udatePublication(data) {
     console.log(data);
-    const nexStep = "mi-cuenta/ventas/vender/step3"
+    const nexStep = "/vender/step3"
     return this._publishService.updatePublication(data, nexStep)
 
+  }
+
+  back(){
+    const urlBack = `/vender/step1/${this.publication.id}`
+    this.route.navigate([urlBack]);
   }
 
   selectAttributes() {
@@ -117,7 +127,7 @@ export class Step2Component implements OnInit {
             )
           
           // this.addCheckboxesAttributes()
-          this.selectValues()
+          
             console.log();
             
         }
@@ -150,15 +160,28 @@ export class Step2Component implements OnInit {
 
   selectValues(){
     
-    const values = this._publishService.publicationValue;
-    if(values){
-      this.publicationAttributes = values.attributes.map(v=> v.id)
-      console.log(this.publicationAttributes);
+    this._publishService.publication.pipe(take(1)).subscribe(
+      res => {
+        console.log(res);
+        
+        if(res && res.attributes.length != 0){
+        this.publicationAttributes = res.attributes.map(v=> v.id)
+    //   console.log(this.publicationAttributes);
+        }else{
+          this.publicationAttributes = []
+        }
+      }
+    )
+
+    // const values = this._publishService.publicationValue;
+    // if(values){
+    //   this.publicationAttributes = values.attributes.map(v=> v.id)
+    //   console.log(this.publicationAttributes);
       
-    }else{
+    // }else{
       
-      this.publicationAttributes = []
-    }
+    //   this.publicationAttributes = []
+    // }
     
     
   }

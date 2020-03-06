@@ -1,56 +1,75 @@
-.container-ventas {
+.container {
+  box-shadow: none;
+}
+.container .container-ventas {
   width: 100%;
 }
-.container-ventas .form .content-form {
+.container .container-ventas .form .content-form {
   position: relative;
   width: 100%;
 }
-.container-ventas .form .content-form .searcher {
+.container .container-ventas .form .content-form .searcher {
   width: 100%;
   font-weight: 200;
   font-size: 0.9em;
   padding: 1rem;
   display: grid;
-  grid-template-columns: repeat(5, 1fr);
-  column-gap: 1rem;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
 }
-.container-ventas .form .content-form .searcher .category {
+.container .container-ventas .form .content-form .searcher .mat-form-field {
+  border-radius: 5px;
+  padding: 5px;
+}
+.container .container-ventas .form .content-form .searcher .category {
   grid-column: 1/2;
 }
-.container-ventas .form .content-form .searcher .brand {
+.container .container-ventas .form .content-form .searcher .brand {
   grid-column: 2/3;
 }
-.container-ventas .form .content-form .searcher .model {
+.container .container-ventas .form .content-form .searcher .model {
   grid-column: 3/4;
 }
-.container-ventas .form .content-form .searcher .sub-model {
-  grid-column: 4/5;
+.container .container-ventas .form .content-form .searcher .sub-model {
+  grid-column: 1/2;
 }
-.container-ventas .form .content-form .searcher .year {
-  grid-column: 5/6;
-}
-.container-ventas .form .content-form .searcher .condition {
+.container .container-ventas .form .content-form .searcher .year {
   grid-column: 2/3;
 }
-.container-ventas .form .content-form .searcher .recorrido {
+.container .container-ventas .form .content-form .searcher .condition {
   grid-column: 3/4;
 }
-.container-ventas .form .content-form .searcher .price-condition {
-  grid-column: 4/5;
+.container .container-ventas .form .content-form .searcher .recorrido {
+  grid-column: 1/2;
 }
-.container-ventas .form .content-form .searcher .price-content {
+.container .container-ventas .form .content-form .searcher .price-condition {
+  grid-column: 2/3;
+}
+.container .container-ventas .form .content-form .searcher .price-content {
   font-weight: 500;
   border-radius: 5px;
   grid-column: 3/4;
   max-width: 100%;
   display: grid;
-  background-color: rgba(45, 133, 247, 0.116);
+  background-color: rgba(247, 234, 45, 0.274);
   grid-template-columns: 30% 70%;
 }
-.container-ventas .form .content-form .searcher .price-content .price {
+.container
+  .container-ventas
+  .form
+  .content-form
+  .searcher
+  .price-content
+  .price {
   grid-column: 2/3;
   min-width: 100%;
 }
-.container-ventas .form .content-form .searcher .price-content .currency {
+.container
+  .container-ventas
+  .form
+  .content-form
+  .searcher
+  .price-content
+  .currency {
   grid-column: 1/2;
 }

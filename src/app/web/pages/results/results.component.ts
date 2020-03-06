@@ -1,7 +1,6 @@
 import { Component, OnInit, HostListener } from '@angular/core';
 import { SearchService } from 'src/app/services/search.service';
-import { DataResult, Result } from 'src/app/interfaces/resultado';
-import { Observable } from 'rxjs';
+import { Result } from 'src/app/interfaces/resultado';
 import { take } from 'rxjs/operators';
 import { SearchFilters } from 'src/app/interfaces/search-filters';
 

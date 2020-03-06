@@ -1,45 +1,16 @@
-<mat-card *ngIf="publication" >
-    <!-- <mat-card-header> -->
-        <mat-card-title>Paso 3 - Imágenes y extras datos extra del Vehículo</mat-card-title>
-    <!-- </mat-card-header> -->
+<mat-card class="container" *ngIf="publication" >
+    <mat-card-header>
+        <mat-card-title>Paso 3 - Imágenes</mat-card-title>
+    </mat-card-header>
     <div class="content">
 
         <div class="upload">
             <images-drag-drop [images]="publication.images" [publication]= "publication"></images-drag-drop>
         </div>
-
-        <!-- ////extras -->
-
-
         
-        <div class="extras">
-            <mat-card-header>
-                <mat-card-title>Cuentanos sobre tu vehículo</mat-card-title>
-            </mat-card-header>
-
-            <checkbox-group [options]="checkboxes" [selectedValues]="publicationExtras" (toggle)="attCheck($event,0)">
-            </checkbox-group>
-    
+        <div class="content-btns"> 
+            <button mat-button  (click)="back()" >Atras</button>
+            <button class="btn-second nex" (click)="onSubmit()" [disabled]="btnDisabled" mat-button >Siguiente</button>
         </div>
-
-        
-        <form [formGroup]="formStep3" >
-
-            <mat-card-header>
-                <mat-card-title>Cuentanos sobre tu vehículo</mat-card-title>
-            </mat-card-header>
-            <div class="description">
-                <mat-form-field class="text-description" appearance="outline">
-                    <textarea formControlName="description"  matInput #description maxlength="1000" placeholder="Descripción"></textarea>
-                    <mat-hint align="start"><strong>Por su seguridad no introdusca datos personales</strong> </mat-hint>
-                    <mat-hint align="end">{{description.value.length}} / 1000</mat-hint>
-                </mat-form-field>
-            </div>
-            <div class="content-btns"> 
-                <button mat-button>Atras</button>
-                <button class="btn-second nex" mat-button [disabled]="!formStep3.valid" (click)="submitStep3()" >Siguiente</button>
-            </div>
-        </form>
-
     </div>
 </mat-card>

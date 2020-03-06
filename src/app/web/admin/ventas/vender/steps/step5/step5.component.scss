@@ -1,0 +1,84 @@
+.container{
+    box-shadow: none;
+    .subtitle-primary{
+        color: rgb(93, 93, 93) !important;
+    }
+    .content{
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 1rem;
+        justify-content: space-around;
+        margin-top: 2rem;
+        
+        .tarjetas{
+            // background-color:rgba(255, 241, 89, 0.335);
+            box-shadow: 5px 5px 15px -8px rgba(0,0,0,0.75);
+            background: rgb(255,255,255);
+            background: radial-gradient(circle, rgba(255,255,255,1) 44%, rgba(255,240,89,0.32) 100%);
+            box-shadow: none;
+            font-weight: 300;
+            .header-card{
+                font-family: 'Nunito', sans-serif;
+                height: 90px;
+                padding-top: 0.5rem;
+                text-align: center;
+                margin-top: -2rem;
+                // border-radius: 50px 50px 0px 0px;
+                border-radius: 5px;
+                color: white;
+                background-color: rgb(12, 179, 156);
+                .mat-card-title{
+                    font-size: 1em;
+                    padding-bottom: 8px;
+                }
+                .subtitle{
+                    color: white!important;
+                    span{
+                        font-weight: 500;
+                        padding: 3px 10px;
+                        border-radius: 50px;
+                        background-color: rgb(243, 207, 75);
+                    }
+                    p{
+                        padding-top: 5px;
+                    }
+                }
+                .mat-card-header-text{
+                    width: 100%!important;
+                    color: white!important;
+                    margin: 0px!important;
+                }
+                
+            }
+            .mat-card-content{
+                // background-color: lightcoral;
+                height: 200px;
+                background-repeat: no-repeat;
+                background-size: 60%;
+                background-position: center bottom;
+            }
+            .mat-card-actions{
+                display: grid;
+                justify-items: center;
+                .btn-primary{
+                    width: 80%;
+                }
+            }
+            
+            .maximo{
+                background-image: url("../../../../../../../assets/images/max-exp.svg");
+            }
+            .alta{
+                background-image: url("../../../../../../../assets/images/alta-exp.svg");
+            }
+            .media{
+                background-image: url("../../../../../../../assets/images/media-exp.svg");
+            }
+            .minimo{
+                background-image: url("../../../../../../../assets/images/min-exp.svg");
+            }
+        }
+    }
+}
+    
+    

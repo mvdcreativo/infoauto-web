@@ -5,30 +5,36 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
-import { SharedModule } from './shared/shared.module';
 import { MaterialModule } from './shared/material/material.module';
 import { indexAuthInterceptor } from './auth/helpers/index-auth.interceptor';
-import { SnackBarComponent } from './shared/snack-bar/snack-bar.component';
+import { PERFECT_SCROLLBAR_CONFIG } from 'ngx-perfect-scrollbar';
+import { PerfectScrollbarConfigInterface } from 'ngx-perfect-scrollbar';
+import { ReactiveFormsModule } from '@angular/forms';
 
+const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
+  suppressScrollX: true
+};
 
 @NgModule({
   declarations: [
     AppComponent,
-
-
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'serverApp' }),
     AppRoutingModule,
     BrowserAnimationsModule,
     HttpClientModule,
-    SharedModule,
     MaterialModule,
+    ReactiveFormsModule
   ],
-  providers: [indexAuthInterceptor],
-  entryComponents: [
-    SnackBarComponent
+  providers: [
+    indexAuthInterceptor,
+    {
+      provide: PERFECT_SCROLLBAR_CONFIG,
+      useValue: DEFAULT_PERFECT_SCROLLBAR_CONFIG
+    }
   ],
+
   bootstrap: [AppComponent]
 })
 export class AppModule { }

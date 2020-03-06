@@ -41,7 +41,8 @@ export class PublishService {
         this.publicationSubject$.next(res)
         console.log(this.publicationValue);
         
-      }
+      },
+      error => this.route.navigate(['/vender/step1'])
     )
   }
 
@@ -54,7 +55,7 @@ export class PublishService {
       res => {
         this.publicationSubject$.next(res)
         console.log(res)
-        this.route.navigate(['mi-cuenta/ventas/vender/step2', this.publicationValue.id ])
+        this.route.navigate(['/vender/step2', this.publicationValue.id ])
       },
       error => { console.log(error) }
     )
@@ -62,8 +63,10 @@ export class PublishService {
 
   ///Actualiza publicación con cada Step que la llama
   updatePublication(data: Product, Step: string) {
+
     const publicationId = this.publicationValue.id
     const nexStep = `${Step}/${publicationId}`
+
     return this._http.put<Product>(`${environment.API}product/${publicationId}`, data).pipe(
       take(1)
     ).subscribe(

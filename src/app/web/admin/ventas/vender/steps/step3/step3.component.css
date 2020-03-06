@@ -1,19 +1,6 @@
-form,
-.upload,
-.extras,
-.description {
+.container {
+  box-shadow: none;
+}
+.container .mat-card-title {
   margin-bottom: 2rem;
-}
-.mat-card-title {
-  margin-bottom: 2rem;
-}
-.description {
-  width: 100%;
-}
-.description .text-description {
-  width: 100%;
-}
-.description .text-description textarea {
-  padding: 1rem;
-  min-height: 150px;
 }

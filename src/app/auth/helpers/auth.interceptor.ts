@@ -21,20 +21,23 @@ export class AuthInterceptor implements HttpInterceptor {
         
         
         if(requestUrl[2] === apiUrl[2]
-            && requestUrl[4] === apiUrl[4]
+            // && requestUrl[4] === apiUrl[4]
             && req.url !== loginUrl
             && req.url !== registerUrl){
-            const currentUser = localStorage.getItem('currentUser');
-            const token = JSON.parse(currentUser).token;
-            // console.log(token);
-            if(token){
-                const headers = req.headers
-                    .set('Authorization', `Bearer ${token}`);
-                const authReq = req.clone({ headers });
-                return next.handle(authReq);
-            }else{
-                return next.handle(req);
-            }
+                if(localStorage.getItem('currentUser')){
+                    const currentUser = localStorage.getItem('currentUser');
+                    const token = JSON.parse(currentUser).token;
+                    // console.log(token);
+                    if(token){
+                        // console.log(token)
+                        const headers = req.headers
+                        .set('Authorization', `Bearer ${token}`);
+                        const authReq = req.clone({ headers });
+                        return next.handle(authReq);
+                    }
+                }else{
+                    return next.handle(req);
+                }
         }else{
             return next.handle(req);
         }

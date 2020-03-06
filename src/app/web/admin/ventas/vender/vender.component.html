@@ -1,4 +1,26 @@
-<div class="content">
-    <router-outlet></router-outlet>
+<div class="container">
+    <div class="logo">
+        <a [routerLink]="[ '/' ]"><img src="../../../assets/images/logo.svg" alt=""></a>
+    </div>
+    <div class="user-actions">
+        <user-actions-component [color] = "'black'"></user-actions-component>
+    </div>
+    <mat-card class="content" [perfectScrollbar]="config">
+        <mat-card-header>
+            <mat-card-title  class="header-box-ventas">
+                <ul>
+                    <li><a [routerLink]="[ '/vender/step1/' ]" routerLinkActive="active"><span class="icon">1</span><span class="text">Selecciona un Vehículo</span></a></li>
+                    <li><a [routerLink]="[ '/vender/step2/' ]" routerLinkActive="active"><span class="icon">2</span><span class="text">Ficha Técnica</span></a></li>
+                    <li><a [routerLink]="[ '/vender/step3/' ]" routerLinkActive="active"><span class="icon">3</span><span class="text">Imágenes</span></a></li>
+                    <li><a [routerLink]="[ '/vender/step4/' ]" routerLinkActive="active"><span class="icon">4</span><span class="text">Datos extra del Vehículo</span></a></li>
+                    <li><a [routerLink]="[ '/vender/step5/' ]" routerLinkActive="active"><span class="icon">5</span><span class="text">Como quieres vender tu vehículo?</span></a></li>
+                </ul>
+
+            </mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+            <router-outlet></router-outlet>
+        </mat-card-content>
+    </mat-card>
 
 </div>

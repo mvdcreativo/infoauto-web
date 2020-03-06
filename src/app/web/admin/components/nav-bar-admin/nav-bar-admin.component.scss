@@ -8,7 +8,14 @@ nav{
     grid-template-columns: 1fr 2fr 1fr;
     align-items: center;
     z-index: 100;
-    
+    .logo{
+        img{
+
+            height: 60px;
+            padding: 5px;
+            padding-left: 30%;
+        }
+    }
     .actions{
         display: grid;
         align-items: center;

@@ -1,7 +1,10 @@
 /* You can add global styles to this file, and also import other style files */
 @import '@angular/material/prebuilt-themes/deeppurple-amber.css';
+@import url('https://fonts.googleapis.com/css?family=Nunito&display=swap');
 
 @import './assets/scss/variables.scss';
+
+@import '~perfect-scrollbar/css/perfect-scrollbar.css';
 .mat-footer-row, .mat-header-row, .mat-row {
     width: 100%!important;
 }
@@ -12,15 +15,13 @@
     a{
         text-decoration: none;
         cursor: pointer;
-        
-        
     }
     box-sizing: border-box;
     list-style: none;
 }
 
 html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+body { margin: 0; font-family: Nunito, "Helvetica Neue", sans-serif; }
 
 
 .mat-dialog-content .mat-horizontal-stepper-header-container { display: none!important; }
@@ -56,6 +57,12 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 }
 .mat-form-field.mat-focused .mat-form-field-ripple {
     background-color: $secondary;
+}
+
+
+.mat-card-header-text{
+    width: 100%!important;
+    margin: 0!important;
 }
 
 ////////////////////

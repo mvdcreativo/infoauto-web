@@ -1,12 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { SearchService } from 'src/app/services/search.service';
 import { PublishService } from 'src/app/web/admin/ventas/services/publish.service';
 import { AuthService } from 'src/app/auth/auth.service';
-import { FormBuilder, Validators, FormGroup } from '@angular/forms';
+import { Validators, FormGroup, FormBuilder } from '@angular/forms';
 import { Router, ActivatedRoute, Params } from '@angular/router';
 import { User } from 'src/app/interfaces/user';
 import { VehicleCategory, Brand, VehicleModel, VehicleSubModel, NameConcat } from 'src/app/interfaces/resultado';
-import { take } from 'rxjs/operators';
 import { Product } from 'src/app/interfaces/product';
 import { SettingApiService } from 'src/app/web/admin/setting-api/services/setting-api.service';
 
@@ -32,6 +30,7 @@ export class Step1Component implements OnInit {
   priceCondition: any;
   priceConditions: any;
   publication: Product;
+  update: boolean = false;
 
   constructor(
     private _settingApiServises: SettingApiService,
@@ -48,8 +47,9 @@ export class Step1Component implements OnInit {
         if (param.id) {
           this._publishService.getPublicationById(param.id)
           this.getPublication();
+
         } else {
-          this.route.navigate(['mi-cuenta/ventas/vender/step1'])
+          this.route.navigate(['/vender/step1'])
         }
         // console.log(param.id);
         
@@ -87,6 +87,7 @@ export class Step1Component implements OnInit {
           });
 
         }
+        this.update = true;
 
       }
     )
@@ -125,6 +126,7 @@ export class Step1Component implements OnInit {
 
   submitStep1() {
 
+
     this.data = this.formStep1.value
     console.log(this.data);
 
@@ -143,11 +145,22 @@ export class Step1Component implements OnInit {
     // this.cleanObjet(this.data)
     console.log(this.nameConcat);
 
-    this.data.name_concat = `${this.nameConcat.brand_id} ${this.nameConcat.vehicle_model_id}`;
+    this.data.name_concat = `${this.nameConcat.brand_id} ${this.nameConcat.vehicle_model_id} ${this.nameConcat.vehicle_sub_model_id}`;
 
     console.log(this.data);
 
-    return this._publishService.addPublication(this.data)
+
+////actualiza o agrega
+    if(this.update){
+      const nexStep = "/vender/step2"
+
+      return this._publishService.updatePublication(this.data, nexStep)
+
+    }else{
+      return this._publishService.addPublication(this.data)
+
+    }
+
 
   }
 

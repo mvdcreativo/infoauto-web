@@ -1,28 +1,29 @@
-.mat-card {
+.container {
+  box-shadow: none;
   padding: 1rem;
 }
-.mat-card .content {
+.container .content {
   padding: 1rem;
 }
-.mat-card .content .radio-group {
+.container .content .radio-group {
   font-size: 12px;
   display: grid;
   grid-template-columns: repeat(5, 1fr);
   padding-bottom: 1rem;
 }
-.mat-card .content .radio-group .radio-button {
+.container .content .radio-group .radio-button {
   margin: 5px;
   padding: 0.5rem;
 }
-.mat-card .content .mat-divider,
-.mat-card .content .mat-divider-horizontal {
+.container .content .mat-divider,
+.container .content .mat-divider-horizontal {
   width: 100%;
   position: relative;
   padding-left: 1rem !important;
 }
-.mat-card .content-btns {
+.container .content-btns {
   margin-top: 2rem;
 }
-.mat-card .content-btns .nex {
+.container .content-btns .nex {
   margin-left: 1rem;
 }

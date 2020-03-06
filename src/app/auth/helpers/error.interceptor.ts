@@ -14,10 +14,15 @@ export class ErrorInterceptor implements HttpInterceptor {
             if (err.status === 401) {
                 // auto logout if 401 response returned from api
                 // this.authService.logout();
-                this.authService.logout().subscribe(
-                    res => console.log(res)
-                  );
-                location.reload(true);
+                if(err.error.message === "Unauthorized"){
+                    this.authService.errorSubject.next('Usuario o contraseña incorrectos')
+                }else{
+                    this.authService.logout()
+                }
+                // this.authService.logout().subscribe(
+                //     res => console.log(res)
+                //   );
+                // location.reload(true);
 
             }
 

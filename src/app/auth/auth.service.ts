@@ -14,6 +14,9 @@ export class AuthService {
 
   private currentUserSubject: BehaviorSubject<CurrentUser>;
   public currentUser: Observable<CurrentUser>;
+  public errorSubject: BehaviorSubject<any> = new BehaviorSubject<any>(null)
+  public error$: Observable<any>;
+
 
   constructor(
     private router: Router,
@@ -21,8 +24,13 @@ export class AuthService {
   ) {
     this.currentUserSubject = new BehaviorSubject<CurrentUser>(JSON.parse(localStorage.getItem('currentUser')));
     this.currentUser = this.currentUserSubject.asObservable();
+    this.error$ = this.errorSubject.asObservable();
+
    }
 
+   public get errorValue(): any {
+    return this.errorSubject.value;
+  }
 
   public get currentUserValue(): CurrentUser {
     return this.currentUserSubject.value;

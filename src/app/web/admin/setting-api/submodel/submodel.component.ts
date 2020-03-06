@@ -1,7 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { SettingApiService } from '../services/setting-api.service';
 import { VehicleSubModel, Brand, VehicleModel } from 'src/app/interfaces/resultado';
-import { MatAutocompleteSelectedEvent } from '@angular/material/autocomplete';
+import { MatAutocompleteSelectedEvent } from '@angular/material/autocomplete/autocomplete';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { MatTableDataSource } from '@angular/material/table';
@@ -15,10 +15,10 @@ import { startWith, map } from 'rxjs/operators';
   styleUrls: ['./submodel.component.scss']
 })
 export class SubmodelComponent implements OnInit {
-  displayedColumns: string[] = ['id', 'name', 'brand', 'model','image_url', 'acciones'];
+  displayedColumns: string[] = ['id', 'name', 'brand', 'model', 'image_url', 'acciones'];
   subModel: VehicleSubModel[];
   vehicleModel: VehicleModel[];
-  brands: Brand [];
+  brands: Brand[];
   dataSource: any;
   urlFiles = `${environment.urlFiles}`;
 
@@ -35,28 +35,27 @@ export class SubmodelComponent implements OnInit {
     private _snackBar: MatSnackBar,
   ) { }
 
-  @ViewChild(MatPaginator, {static: true}) paginator: MatPaginator;
+  @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
 
   ngOnInit() {
     this.selectBrand()
-    
     this.getSubModel()
 
   }
-  
+
   onSubmit() {
-    
+
     this.addSubModel();
   }
 
   addSubModel() {
     const data = {
-      model_id : this.formAdd.controls.vehicle_model_id.value.id,
+      model_id: this.formAdd.controls.vehicle_model_id.value.id,
       name: this.formAdd.controls.name.value
     }
 
     console.log(data);
-    
+
     this._settingsService.addSubModel(data).subscribe(
       res => {
         console.log(res);
@@ -77,35 +76,40 @@ export class SubmodelComponent implements OnInit {
   /// INPUT SELECT MARCA autocomplete
   selectBrand() {
     this._settingsService.getBrands().subscribe(
-        (brands: any) => {
-          this.brands = brands
-          
-        }
-      );
+      (brands: any) => {
+        this.brands = brands
+        this.createForm();
+
+        // console.log(brands)
+      }
+    );
   }
 
-  selectChangesBrand(){
-    if(this.brands){
 
-    this.filteredOptionsBrand = this.formAdd.controls.brand_id.valueChanges
-    .pipe(
-      startWith(''),
-      map(value => typeof value === 'string' ? value : value.name),
-      map(name => name ? this._filter(name, this.brands ) : this.brands.slice())
-      
-    );
+  selectChangesBrand() {
+    if (this.brands) {
+
+      this.filteredOptionsBrand = this.formAdd.controls.brand_id.valueChanges
+        .pipe(
+          startWith(''),
+          map(value => typeof value === 'string' ? value : value.name),
+          map(name => name ? this._filter(name, this.brands) : this.brands.slice())
+
+        );
+      console.log(this.filteredOptionsBrand);
+
     }
 
   }
-  selectChangesModel(){
-    if(this.vehicleModel){
+  selectChangesModel() {
+    if (this.vehicleModel) {
       this.filteredOptionsModel = this.formAdd.controls.vehicle_model_id.valueChanges
-      .pipe(
-        startWith(''),
-        map(value => typeof value === 'string' ? value : value.name),
-        map(name => name ? this._filter(name, this.vehicleModel ) : this.vehicleModel.slice())
-        
-      );
+        .pipe(
+          startWith(''),
+          map(value => typeof value === 'string' ? value : value.name),
+          map(name => name ? this._filter(name, this.vehicleModel) : this.vehicleModel.slice())
+
+        );
 
     }
 
@@ -117,20 +121,20 @@ export class SubmodelComponent implements OnInit {
     return table ? table.name : undefined;
   }
 
+
   private _filter(name: string, tabla: any): any[] {
     const filterValue = name.toLowerCase();
 
     return tabla.filter(option => option.name.toLowerCase().indexOf(filterValue) === 0);
   }
 
-///////////////
+  ///////////////
 
 
-  getSubModel(){
+  getSubModel() {
     this._settingsService.getSubModel().subscribe(
-      (res:any) => {
+      (res: any) => {
         this.subModel = res.reverse();
-        this.createForm();
         this.dataSource = new MatTableDataSource(this.subModel);
         this.dataSource.paginator = this.paginator;
 
@@ -138,7 +142,7 @@ export class SubmodelComponent implements OnInit {
     );
   }
 
-  getModels(e:MatAutocompleteSelectedEvent) {
+  getModels(e: MatAutocompleteSelectedEvent) {
     this.formAdd.controls.vehicle_model_id.reset()
     console.log(e.option.value)
     this.vehicleModel = e.option.value.vehicle_models
@@ -168,58 +172,57 @@ export class SubmodelComponent implements OnInit {
   }
 
 
- ///////EDIT
- openEdit(element: any) {
-  this.mostrar = false;
-  this.formAdd.reset();
-  this.edit = false;
-  this.edit = true;
-  console.log(element);
-  
-  this.formAdd.setValue(
-    {
-      name: element.name,
-      vehicle_model_id: element.vehicle_model,
-      brand_id: element.vehicle_model.brand
-    }
-  )
-  this.idUpdate = element.id;
-  this.mostrar = true;
+  ///////EDIT
+  openEdit(element: any) {
+    this.oculta(this.mostrar = !this.mostrar)
 
-}
-
-update(id:number) {
-  
-  const data = {
-    model_id : this.formAdd.controls.vehicle_model_id.value.id,
-    name: this.formAdd.controls.name.value
+    console.log(element);
+    setTimeout(() => {
+      this.formAdd.setValue(
+        {
+          name: element.name,
+          vehicle_model_id: element.vehicle_model,
+          brand_id: element.vehicle_model.brand
+        }
+      )
+      this.idUpdate = element.id;
+      this.mostrar = true;
+      this.edit = true;
+    }, 100)
   }
 
-  console.log(data);
-  
-  this._settingsService.updateSubModel(id, data).subscribe(
-    res => {
-      console.log(res);
-      this._settingsService.openSnackBar('success', `Sub Modelo ${res.name} Actualizado con éxito!!`)
-      this.getSubModel()
-      this.formAdd.reset();
-      this.mostrar = false;
-      this.idUpdate = null;
-    },
-    err => {
-      console.log(err);
+  update(id: number) {
 
-      this._settingsService.openSnackBar('error', `${err}`)
-    },
-  )
-}  
+    const data = {
+      model_id: this.formAdd.controls.vehicle_model_id.value.id,
+      name: this.formAdd.controls.name.value
+    }
 
-oculta(estado) {
-  this.edit = false;
-  this.formAdd.reset();
-  this.mostrar = estado
-}
-//////////
+    console.log(data);
+
+    this._settingsService.updateSubModel(id, data).subscribe(
+      res => {
+        console.log(res);
+        this._settingsService.openSnackBar('success', `Sub Modelo ${res.name} Actualizado con éxito!!`)
+        this.getSubModel()
+        this.formAdd.reset();
+        this.mostrar = false;
+        this.idUpdate = null;
+      },
+      err => {
+        console.log(err);
+
+        this._settingsService.openSnackBar('error', `${err}`)
+      },
+    )
+  }
+
+  oculta(estado) {
+    this.edit = false;
+    this.formAdd.reset();
+    this.mostrar = estado
+  }
+  //////////
 
   applyFilter(filterValue: string) {
     this.dataSource.filter = filterValue.trim().toLowerCase();
@@ -249,5 +252,5 @@ oculta(estado) {
       return null  /* valid option selected */
     }
   }
-////
+  ////
 }

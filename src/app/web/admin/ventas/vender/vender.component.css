@@ -1,60 +1,62 @@
-.conttent {
+.container {
   width: 100%;
-}
-.step {
-  width: 100%;
-}
-.step form {
+  height: 100vh;
+  background: linear-gradient(to top, #efbf19 50%, #fff 50%);
   display: grid;
-}
-ul {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-}
-ul li {
-  font-size: 0.8em;
-  padding: 0.5rem;
-}
-form .content-btns {
-  margin-top: 2rem;
-}
-form .content-btns .nex {
-  margin-left: 1rem;
-}
-h2 {
-  padding: 1rem;
-  width: 100%;
-}
-.images {
-  display: grid;
-  width: 100%;
-  grid-template-columns: repeat(8, 1fr);
+  align-items: center;
   justify-items: center;
-  row-gap: 1rem;
 }
-.images .image {
-  padding: 0.5rem;
-  border: 1px #d4d4d4;
-  border-style: dashed;
+.container .content {
+  border-radius: 10px;
+  width: 70%;
+  max-height: 90vh;
+  overflow: auto;
 }
-.images .image .ico-delete {
-  font-size: 0.8em;
-  position: absolute;
+.container .content .header-box-ventas {
+  height: 64px;
+  display: inline-flex;
+  align-items: center;
+  z-index: 100;
+  margin-top: -1rem;
+  margin-left: -1rem;
+  margin-right: -1rem;
 }
-.images .image .ico-delete .material-icons {
-  border-radius: 2px;
-  color: #ff7676;
+.container .content .header-box-ventas ul {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  width: 100%;
+  justify-items: center;
+  justify-content: space-around;
 }
-.images .image label {
-  cursor: pointer;
+.container .content .header-box-ventas ul li {
+  height: 60px;
 }
-.images .image label .img {
+.container .content .header-box-ventas ul li a {
+  color: black;
+  font-weight: 300;
+  display: grid;
+  justify-content: space-between;
+  grid-template-columns: 1fr 2fr;
+  column-gap: 5px;
+  align-content: center;
+  font-size: 1em;
+  border-radius: 50px;
+  padding: 5px;
+}
+.container .content .header-box-ventas ul li a .mat-icon {
+  width: 50px;
+  height: 50px;
+}
+.container .content .header-box-ventas ul li a span {
+  display: flex;
+  align-items: center;
+}
+.container .content .header-box-ventas ul li .active {
+  background-color: rgba(229, 185, 39, 0.178);
+}
+.container .content .header-box-ventas ul li .active .mat-icon {
   width: 100px;
 }
-.description {
-  width: 100%;
-}
-.description .text-description {
-  width: 100%;
-  height: 150px;
+.container .content .header-box-ventas ul li .active span {
+  font-weight: 400;
 }

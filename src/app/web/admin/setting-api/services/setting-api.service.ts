@@ -5,8 +5,8 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Brand, VehicleCategory, VehicleModel, VehicleSubModel } from 'src/app/interfaces/resultado';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { SnackBarComponent } from 'src/app/shared/snack-bar/snack-bar.component';
 import { Attributes, Extras } from 'src/app/interfaces/product';
+import { SnackBarComponent } from 'src/app/shared/snack-bar/snack-bar.component';
 
 @Injectable({
   providedIn: 'root'

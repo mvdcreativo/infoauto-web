@@ -110,6 +110,7 @@ export class BrandsComponent implements OnInit {
       this.formAdd.reset();
       this.edit = false;
       this.edit = true;
+      setTimeout(() => {
       this.formAdd.setValue(
         {
           name: element.name,
@@ -120,7 +121,7 @@ export class BrandsComponent implements OnInit {
       this.idUpdate = element.id;
       this.mostrar = true;
       console.log(element);
-  
+      },500)
     }
   
     update(id:number) {

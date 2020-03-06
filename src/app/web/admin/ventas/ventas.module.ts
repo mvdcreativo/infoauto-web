@@ -11,6 +11,9 @@ import { Step2Component } from './vender/steps/step2/step2.component';
 import { Step3Component } from './vender/steps/step3/step3.component';
 import { Step4Component } from './vender/steps/step4/step4.component';
 import { ImagesDragDropComponent } from './vender/steps/step3/images-drag-drop/images-drag-drop.component';
+import { DialogVenderComponent } from './vender/dialog-vender/dialog-vender.component';
+import { Step5Component } from './vender/steps/step5/step5.component';
+import { ComponentsModule } from '../components/components.module';
 
 
 
@@ -22,7 +25,9 @@ import { ImagesDragDropComponent } from './vender/steps/step3/images-drag-drop/i
     Step2Component,
     Step3Component,
     Step4Component,
+    Step5Component,
     ImagesDragDropComponent,
+    DialogVenderComponent,
     
   ],
   imports: [
@@ -30,7 +35,8 @@ import { ImagesDragDropComponent } from './vender/steps/step3/images-drag-drop/i
     VentasRoutingModule,
     ReactiveFormsModule,
     SharedModule,
-    AuthModule
+    AuthModule,
+    ComponentsModule,
   ]
 })
 export class VentasModule { }

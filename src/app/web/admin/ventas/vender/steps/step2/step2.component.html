@@ -1,7 +1,7 @@
-<mat-card>
-    <!-- <mat-card-header> -->
+<mat-card class="container" *ngIf="publication">
+    <mat-card-header>
         <mat-card-title>Paso 2 - Ficha Técnica</mat-card-title>
-    <!-- </mat-card-header> -->
+    </mat-card-header>
     <div class="content">
         <checkbox-group [options]="attrCheckboxes" [selectedValues]="publicationAttributes" (toggle)="attCheck($event,0)">
         </checkbox-group>
@@ -14,7 +14,7 @@
     </checkbox-group> -->
 
 
-        <ng-container *ngIf="item.multi_option === 's'; else elseTemplate">
+        <ng-container *ngIf="item.multi_option === '1'; else elseTemplate">
 
             <label>{{ item.title }}</label>
             <mat-radio-group class="radio-group" [value]="value(item.attributes, i+1)">
@@ -38,7 +38,7 @@
     </div>
 
     <div class="content-btns">
-        <button mat-button>Atras</button>
+        <button mat-button (click)="back()" routerLinkActive="active">Atras</button>
         <button class="btn-second nex" mat-button (click)="submitStep2()">Siguiente</button>
     </div>
 

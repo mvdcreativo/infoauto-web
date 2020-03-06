@@ -8,7 +8,6 @@ import { ModelsComponent } from './models-vehicles/models.component';
 import { SubmodelComponent } from './submodel/submodel.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { SharedModule } from 'src/app/shared/shared.module';
-import { SnackBarComponent } from 'src/app/shared/snack-bar/snack-bar.component';
 import { AttributesComponent } from './attributes/attributes.component';
 import { ExtrasComponent } from './extras/extras.component';
 
