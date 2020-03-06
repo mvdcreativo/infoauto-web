@@ -26,8 +26,21 @@ import { GuiaPreciosComponent } from './guia-precios/guia-precios.component';
 import { ChartComponent } from './guia-precios/chart/chart.component';
 import { MaterialModule } from 'src/app/shared/material/material.module';
 import { AuthModule } from 'src/app/auth/auth.module';
+// import { NgxGalleryModule } from 'ngx-gallery';
 
 
+/* Custom Hammer configuration */
+import { HammerGestureConfig, HAMMER_GESTURE_CONFIG } from '@angular/platform-browser';
+import * as Hammer from 'hammerjs';
+
+export class CustomHammerConfig extends HammerGestureConfig {
+  overrides = {
+    'pan': {
+      direction: Hammer.DIRECTION_ALL,
+    }
+  }
+}
+/* End Custom hammer configuration */
 
 
 export class FeatureRoutingModule {}
@@ -52,6 +65,7 @@ export class FeatureRoutingModule {}
     SearchInputComponent,
     GuiaPreciosComponent,
     ChartComponent,
+    
   ],
   imports: [
     CommonModule,
@@ -62,6 +76,10 @@ export class FeatureRoutingModule {}
     // NgxGalleryModule,
     InfiniteScrollModule,
     AuthModule,    
+  ],
+  providers:[
+    {provide: HAMMER_GESTURE_CONFIG, useClass: CustomHammerConfig}
+
   ]
 })
 export class PagesModule { }

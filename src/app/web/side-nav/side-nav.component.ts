@@ -68,14 +68,13 @@ export class SideNavComponent implements OnInit {
             this.stateCondition(false)
             this.stateSubmodel(false)
             this.stateAttributes(false)
-            this.selectAnos();
-            this.selectPrecios();
 
           }
         )
       }
     )
-
+    this.selectAnos();
+    this.selectPrecios();
 
 
   }
