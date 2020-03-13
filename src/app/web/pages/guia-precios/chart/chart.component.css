@@ -30,7 +30,6 @@ h1 {
 }
 .detalle-chart .chart canvas {
   max-width: 50%;
-  padding-top: calc(100% - 50%);
 }
 .content {
   width: 100%;

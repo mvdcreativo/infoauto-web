@@ -15,7 +15,7 @@ import { FilterBarComponent } from '../filter-bar/filter-bar.component';
 import { ListComponent } from './list/list.component';
 import { AccesosDirectosComponent } from './home/accesos-directos/accesos-directos.component';
 import { DetalleComponent } from './detalle/detalle.component';
-import { GalleryComponent } from './detalle/gallery/gallery.component';
+import { DetalleGalleryComponent } from './detalle/gallery/detalle-gallery.component';
 // import { NgxGalleryModule } from 'ngx-gallery';
 import { ResReutilComponent } from '../res-reutil/res-reutil.component';
 import { BrandModelPopularComponent } from '../brand-model-popular/brand-model-popular.component';
@@ -26,21 +26,9 @@ import { GuiaPreciosComponent } from './guia-precios/guia-precios.component';
 import { ChartComponent } from './guia-precios/chart/chart.component';
 import { MaterialModule } from 'src/app/shared/material/material.module';
 import { AuthModule } from 'src/app/auth/auth.module';
-// import { NgxGalleryModule } from 'ngx-gallery';
+import { GalleryModule } from  '@ngx-gallery/core';
 
 
-/* Custom Hammer configuration */
-import { HammerGestureConfig, HAMMER_GESTURE_CONFIG } from '@angular/platform-browser';
-import * as Hammer from 'hammerjs';
-
-export class CustomHammerConfig extends HammerGestureConfig {
-  overrides = {
-    'pan': {
-      direction: Hammer.DIRECTION_ALL,
-    }
-  }
-}
-/* End Custom hammer configuration */
 
 
 export class FeatureRoutingModule {}
@@ -58,7 +46,7 @@ export class FeatureRoutingModule {}
     ListComponent,
     AccesosDirectosComponent,
     DetalleComponent,
-    GalleryComponent,
+    DetalleGalleryComponent,
     ResReutilComponent,
     BrandModelPopularComponent,
     FooterComponent,
@@ -73,12 +61,11 @@ export class FeatureRoutingModule {}
     ReactiveFormsModule,
     SharedModule,
     FormsModule,
-    // NgxGalleryModule,
+    GalleryModule ,
     InfiniteScrollModule,
     AuthModule,    
   ],
   providers:[
-    {provide: HAMMER_GESTURE_CONFIG, useClass: CustomHammerConfig}
 
   ]
 })

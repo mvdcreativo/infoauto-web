@@ -25,6 +25,7 @@ const routes: Routes = [
   {
     path: 'vender',
     component: VenderComponent,
+    canActivate:[AuthGuard],
     children: [
       {
         path: 'step1/:id',
@@ -94,7 +95,7 @@ const routes: Routes = [
 @NgModule({
   imports: [RouterModule.forRoot(routes, {
     initialNavigation: 'enabled'
-  })],
+})],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }

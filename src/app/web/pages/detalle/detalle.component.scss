@@ -60,9 +60,7 @@
                 font-size: 1em;
             }
         }
-        .chart{
-            width: 100%;
-        }
+
     }
     .info{
         // background-color: lightcoral;
@@ -132,6 +130,13 @@
     
 }
 
+
+.chart{
+    width: 100%;
+    grid-column: 1/8;
+    grid-row: span 2;
+    // height: 200px;
+}
 @media (max-width: 800px){
 
     .container{

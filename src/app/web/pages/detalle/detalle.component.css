@@ -52,9 +52,6 @@
   padding: 1rem;
   font-size: 1em;
 }
-.container .data-user .chart {
-  width: 100%;
-}
 .container .info {
   padding: 1rem;
   width: 90%;
@@ -118,6 +115,11 @@
   font-size: 1em;
   padding: 0.5rem;
   color: grey;
+}
+.chart {
+  width: 100%;
+  grid-column: 1/8;
+  grid-row: span 2;
 }
 @media (max-width: 800px) {
   .container {

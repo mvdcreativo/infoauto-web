@@ -18,6 +18,7 @@
     }
     box-sizing: border-box;
     list-style: none;
+    font-family: Nunito, "Helvetica Neue", sans-serif;
 }
 
 html, body { height: 100%; }
@@ -142,3 +143,11 @@ td.mat-cell:last-of-type, td.mat-footer-cell:last-of-type, th.mat-header-cell:la
     padding-right: 0!important;
 }
 
+
+//////Gallery
+gallery-core[thumbPosition=bottom] gallery-thumbs .g-slider, gallery-core[thumbPosition=top] gallery-thumbs .g-slider{
+    left: 0%!important;
+    width: 100%;
+    padding-left: 10%;
+    margin-top: 0.5rem;
+}

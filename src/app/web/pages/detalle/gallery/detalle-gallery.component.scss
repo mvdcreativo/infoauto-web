@@ -1,0 +1,16 @@
+.gallery{
+    width: 50vw !important;
+    height: calc( 50vw / 1.5)!important;
+    background-color: transparent;
+}
+
+gallery-core[thumbPosition=bottom] gallery-thumbs .g-slider, gallery-core[thumbPosition=top] gallery-thumbs .g-slider{
+    left: 0%!important;
+}
+
+@media ( max-width : 800px){
+    .gallery{
+        width: 100vw !important;
+        height: calc( 100vw / 1.5)!important;
+    } 
+}

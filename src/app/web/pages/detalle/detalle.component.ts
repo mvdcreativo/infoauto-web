@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Params } from '@angular/router';
 import { take } from 'rxjs/operators';
 import { SearchService } from 'src/app/services/search.service';
+import { GalleryItem, ImageItem } from '@ngx-gallery/core';
+
 
 @Component({
   selector: 'app-detalle',
@@ -9,6 +11,8 @@ import { SearchService } from 'src/app/services/search.service';
   styleUrls: ['./detalle.component.scss']
 })
 export class DetalleComponent implements OnInit {
+  galleryItems: GalleryItem[];
+  images: ImageItem[];
 
 
   
@@ -17,7 +21,7 @@ export class DetalleComponent implements OnInit {
     private _searchService : SearchService
   ) { }
 
-    vehiculo : any;
+    vehiculo : any = null;
     title:string 
     panelOpenState = true;
     multi = true
@@ -30,9 +34,7 @@ export class DetalleComponent implements OnInit {
 
 
   getParams() {
-    this.rutaActiva.paramMap.pipe(
-      take(1))
-      .subscribe(
+    this.rutaActiva.paramMap.subscribe(
       (params : Params) => {
         if (params.params.id) {
           let id= params.params.id
@@ -52,6 +54,9 @@ export class DetalleComponent implements OnInit {
         this.vehiculo = res
         this.title = `${this.vehiculo.brand.name} ${this.vehiculo.vehicle_model.name} año ${this.vehiculo.year}`
         console.log(this.vehiculo);
+        this.images = this.vehiculo.images.map(v => new ImageItem({src: v.url, thumb: v.url}));
+
+
       }
     )
   }
