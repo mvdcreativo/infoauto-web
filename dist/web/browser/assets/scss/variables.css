@@ -1,0 +1,26 @@
+.btn-primary {
+  background-color: #2d86f7;
+  color: #fff;
+  font-weight: 200;
+}
+.a-primary {
+  color: #2d86f7;
+}
+.nav-primary {
+  background-color: #efbf19;
+  color: #fff;
+}
+.color-back {
+  background-color: #eceff0;
+}
+h2 {
+  color: #424242;
+}
+.btn-second {
+  font-size: 1em;
+  color: white;
+  background-color: #0cb39c;
+}
+.btn-second:hover {
+  background-color: #00a8a8;
+}
