@@ -1,6 +1,6 @@
 ////SOLUCION LOCALSTORAGE
-import 'localstorage-polyfill'
- global['localStorage'] = localStorage;
+// import 'localstorage-polyfill'
+//  global['localStorage'] = localStorage;
  ///////////////
 import { enableProdMode } from '@angular/core';
 
