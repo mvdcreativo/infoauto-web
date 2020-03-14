@@ -33,7 +33,7 @@ export class BrandModelPopularComponent implements OnInit {
   width: number;
   limit: number = 8
   models: any;
-  urlImageBack: string = `${environment.urlFiles}logos-marcas/`
+  urlImageBack: string = `${environment.urlFiles}`
   constructor(
     private _searchService: SearchService
   ) { }
