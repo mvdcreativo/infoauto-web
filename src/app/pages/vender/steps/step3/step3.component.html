@@ -1,0 +1,16 @@
+<mat-card class="container" *ngIf="publication" >
+    <mat-card-header>
+        <mat-card-title>Paso 3 - Imágenes</mat-card-title>
+    </mat-card-header>
+    <div class="content">
+
+        <div class="upload">
+            <images-drag-drop [images]="publication.images" [publication]= "publication"></images-drag-drop>
+        </div>
+        
+        <div class="content-btns"> 
+            <button  mat-stroked-button (click)="back()" routerLinkActive="active">Atras</button>
+            <button color="primary" (click)="onSubmit()" [disabled]="btnDisabled" mat-flat-button >Siguiente</button>
+        </div>
+    </div>
+</mat-card>

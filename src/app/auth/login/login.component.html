@@ -1,0 +1,40 @@
+<div class="container-fluid">
+<div class="logo">
+    <a [routerLink]="[ '/' ]"><img src="../../../assets/images/logo.svg" alt=""></a>
+</div>
+  <div class="register">
+    <!-- <button [routerLink]="['/auth/register']" routerLinkActive="router-link-active"  mat-button>Registrarse</button> -->
+  </div>
+  <div class="content">
+    <mat-card class="login">
+      <form class="example-form" [formGroup]="form" (ngSubmit)="onSubmit()">
+      <mat-card-header class="">
+          <mat-card-title>Datos de Acceso</mat-card-title>
+      </mat-card-header>
+ 
+        <div class="row">
+          <mat-form-field appearance="outline">
+            <mat-label>Correo electrónico</mat-label>
+            <input matInput placeholder="Email" formControlName="email">
+            <!-- <mat-error *ngIf="form.controls.email.valid">OK</mat-error>
+            <mat-error *ngIf="form.controls.email.errors.email">Email inválido</mat-error>
+            <mat-error *ngIf="form.controls.email.errors.required">Campo requerido</mat-error> -->
+          </mat-form-field>
+        </div>
+        <div class="row">
+          <mat-form-field appearance="outline">
+              <mat-label>Contraseña</mat-label>
+              <input matInput placeholder="Contraseña" type="password" formControlName="password">
+              <!-- <mat-error *ngIf="form.controls.password.errors.required">Campo requerido</mat-error> -->
+          </mat-form-field>
+        </div>
+      
+        <div class="row">
+          <button mat-flat-button color="primary" >Enviar</button>
+        </div>
+
+
+      </form>
+    </mat-card>
+  </div>
+</div>

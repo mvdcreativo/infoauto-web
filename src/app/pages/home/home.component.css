@@ -1,0 +1,41 @@
+.header {
+  z-index: 1000 !important;
+  position: absolute;
+  width: 100%;
+  top: 0 !important;
+}
+.carousel {
+  top: 0;
+  z-index: 100 !important;
+  height: 70vh !important;
+}
+.container {
+  z-index: 100;
+}
+.container .searcher {
+  z-index: 200;
+  position: relative;
+  margin-top: -30%;
+}
+.container .accesos-directos {
+  z-index: 200;
+  margin-top: 80px;
+}
+.container .destacados {
+  width: 100%;
+  height: 354px;
+  overflow: hidden;
+  margin-top: 60px;
+}
+.container .model-brand-popular {
+  width: 100%;
+  margin-top: 60px;
+}
+@media (max-width: 768px) {
+  .searcher {
+    width: 100%;
+    margin-top: -75% !important;
+    margin-left: initial;
+    margin-right: initial;
+  }
+}

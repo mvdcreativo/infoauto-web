@@ -1,0 +1,6 @@
+<main class="main-result row justify-content-around" *ngIf="resultados ; else loading">
+
+    <cards class=" col-sm-12 col-md-3 col-lg-3 col-xl-3" *ngFor="let res of resultados" [data]='res'></cards>
+    
+</main>
+<ng-template #loading>Cargando...</ng-template>

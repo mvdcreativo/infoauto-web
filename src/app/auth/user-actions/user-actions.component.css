@@ -1,0 +1,45 @@
+.user {
+  width: 100%;
+  float: right;
+  display: grid;
+  grid-template-columns: 1fr;
+  align-items: center;
+  justify-content: right;
+}
+.user .account {
+  align-items: center;
+  justify-items: center;
+}
+.user .menu-user {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 2fr 30px;
+  align-items: center;
+  justify-items: right;
+  border-radius: 5px;
+  font-size: 16px !important;
+  padding: 0.5rem;
+}
+.user .menu-user a {
+  color: #424242;
+  padding: 0.4rem 1rem;
+  font-size: 14px;
+  font-family: NunitoLight!important;
+}
+.user .menu-user a:hover {
+  color: #424242;
+}
+.user span {
+  text-align: right;
+}
+.user span .register {
+  border-radius: 50px;
+  font-family: NunitoLight!important;
+  line-height: 2em;
+  margin-left: 3px;
+}
+.user span .login {
+  border-radius: 50px;
+  font-family: NunitoLight!important;
+  line-height: 2em;
+}

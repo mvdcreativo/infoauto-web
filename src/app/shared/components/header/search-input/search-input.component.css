@@ -1,0 +1,51 @@
+mat-form-field {
+  background-color: transparent;
+}
+.content {
+  width: 100%;
+  height: 35px;
+  background-color: white;
+  border-radius: 50px;
+  display: grid;
+  -webkit-box-shadow: 0px 1px 5px 0px rgba(82, 82, 82, 0.4);
+  -moz-box-shadow: 0px 1px 5px 0px rgba(82, 82, 82, 0.4);
+  box-shadow: 0px 1px 5px 0px rgba(82, 82, 82, 0.4);
+  align-content: center;
+}
+.content form {
+  width: 100%;
+  display: grid;
+}
+.content form .form-content {
+  display: grid;
+  grid-template-columns: 2fr 8fr 1fr;
+  align-items: center;
+}
+.content form .form-content .category .select {
+  min-width: 150px;
+  font-size: 12px;
+  padding-left: 1rem;
+  padding-right: 0.5rem;
+}
+.content form .form-content .input .input-text {
+  align-items: center;
+  border: none;
+  width: 100%;
+  font-size: 12px;
+  outline: none;
+}
+.content form .form-content .input .input-text input {
+  color: #424242;
+}
+.content form .form-content .button {
+  justify-items: right;
+}
+.content form .form-content .button .btn_search {
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+  border: none;
+  background: none;
+  padding-right: 1rem;
+  color: #757575;
+}

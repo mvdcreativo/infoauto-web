@@ -1,0 +1,94 @@
+.content {
+  padding-top: 2rem;
+  width: 100%;
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 1rem !important;
+}
+.content .data-user {
+  width: 100%;
+}
+.content .data-user div {
+  margin-bottom: 2rem;
+}
+.content .data-user .year-km {
+  font-size: 1em;
+  font-family: NunitoLight!important;
+  color: grey;
+}
+.content .data-user .ubication {
+  font-size: 1em;
+  font-family: NunitoLight!important;
+  color: grey;
+}
+.content .data-user .contactar {
+  width: 100%;
+  display: grid;
+  justify-items: center;
+}
+.content .data-user .contactar button {
+  width: 50%;
+  padding: 1rem;
+  font-size: 1em;
+}
+.content h2 {
+  font-size: 1.3em;
+  margin-bottom: 1rem;
+}
+.content
+  .attributes
+  .content-ficha
+  .mat-card
+  .mat-card-content
+  ul
+  li
+  .mat-icon {
+  font-size: 18px;
+}
+.content .extras,
+.content .description {
+  margin-top: 2rem;
+}
+.content .extras .mat-card .mat-card-header .mat-card-subtitle,
+.content .description .mat-card .mat-card-header .mat-card-subtitle {
+  font-family: NunitoBold!important;
+}
+.content .extras .mat-card .mat-card-content ul li .mat-icon,
+.content .description .mat-card .mat-card-content ul li .mat-icon {
+  font-size: 18px;
+}
+.interes {
+  padding: 20px !important;
+  background-color: #d8dce7;
+}
+.interes .relacionados,
+.interes .pub-vendedor {
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 1rem;
+  margin-bottom: 2rem;
+  margin-top: 1rem;
+  overflow: hidden;
+}
+.interes .relacionados h2,
+.interes .pub-vendedor h2 {
+  font-size: 1.3em;
+  text-align: center;
+}
+.interes .relacionados span,
+.interes .pub-vendedor span {
+  display: grid;
+  justify-items: right;
+}
+.interes .relacionados span a,
+.interes .pub-vendedor span a {
+  text-decoration: none;
+  font-size: 1em;
+  padding: 0.5rem;
+  color: grey;
+}
+.chart {
+  width: 100%;
+}

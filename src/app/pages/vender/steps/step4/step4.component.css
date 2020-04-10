@@ -1,0 +1,21 @@
+.container {
+  box-shadow: none;
+}
+.container form,
+.container .upload,
+.container .extras,
+.container .description {
+  margin-bottom: 2rem;
+}
+.container .mat-card-title {
+  margin-bottom: 1rem;
+}
+.container .description {
+  width: 100%;
+}
+.container .description .text-description {
+  width: 100%;
+}
+.container .description .text-description textarea {
+  min-height: 100px;
+}

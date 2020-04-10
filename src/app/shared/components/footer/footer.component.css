@@ -1,0 +1,17 @@
+.footer {
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: 1fr;
+  background-color: #2962ff;
+  color: white;
+  height: 300px;
+  bottom: 0px;
+  margin-top: 3rem;
+}
+.footer div {
+  padding: 3rem;
+}
+.footer div p {
+  margin-top: 1rem;
+}

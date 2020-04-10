@@ -1,0 +1,27 @@
+<div class="content row justify-content-between">
+    <div class="content-button col-xs-12 col-md-6 col-lg-3">
+        <a [routerLink]="['/listado']" [queryParams]= "{ condition : '0km'}"  mat-flat-button class="btn" color="primary">
+            <img src="../../../../../assets/images/acc-nuevo.svg" class="icon-acc"> 
+            <span>Nuevos</span>    
+        </a>
+    </div>
+    <div class="content-button col-xs-12 col-md-6 col-lg-3">
+        <a [routerLink]="['/listado']" [queryParams]= "{ condition : 'usado'}" mat-flat-button class="btn" color="primary">
+            <img src="../../../../../assets/images/acc-usado.svg" class="icon-acc">
+            <span>Usados</span>
+        </a>
+    </div>
+    <div class="content-button col-xs-12 col-md-6 col-lg-3">
+        <a [routerLink]="['/guia-de-precios']" mat-flat-button class="btn" color="primary">
+                <img src="../../../../../assets/images/acc-guia.svg" class="icon-acc" >
+                <span>Guía de Precios</span>
+        </a>
+    </div>
+    <div class="content-button col-xs-12 col-md-6 col-lg-3">
+        <a [routerLink]="['/']" mat-flat-button class="btn" color="primary">
+                <img src="../../../../../assets/images/acc-compara.svg" class="icon-acc">
+                <span>Comparador</span>
+        </a>
+    </div>
+
+</div>

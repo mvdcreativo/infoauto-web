@@ -1,0 +1,94 @@
+.sidenav-container {
+  min-height: 100vh;
+  background-color: transparent;
+  max-width: 1200px !important;
+  margin-right: auto;
+  margin-left: auto;
+}
+.sidenav {
+  width: 250px;
+  background-color: #eceff1;
+}
+.sidenav .mat-toolbar {
+  background: inherit;
+}
+.mat-toolbar.mat-primary {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+}
+.mat-sidenav-content {
+  height: 100%;
+  overflow: initial;
+}
+.mat-drawer-side {
+  border: none !important;
+}
+mat-form-field {
+  background-color: transparent;
+}
+.content {
+  margin-top: 30px;
+  padding-left: 1rem;
+  color: #535353;
+  box-sizing: border-box;
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: auto 3rem auto;
+  row-gap: 1rem;
+  padding-bottom: 1rem;
+}
+.content .filters-selected {
+  width: 100%;
+  display: grid;
+  align-content: center;
+}
+.content .res-total {
+  width: 100%;
+  font-weight: bold !important;
+  font-size: 16px;
+  margin-bottom: 1rem;
+}
+.content .item {
+  padding-bottom: 2rem;
+}
+.content .item h6 {
+  font-size: 14px;
+}
+.content .item span {
+
+}
+.content .item ul a {
+  cursor: pointer;
+  font-size: 14px;
+}
+.content .item ul li .item-side-bar {
+  padding-left: 1rem;
+}
+.content .item .card-float {
+  width: 25vw;
+  height: auto;
+  display: grid;
+  z-index: 1000 !important;
+}
+.content .item .card-float .close {
+  text-align: right;
+}
+.content .item .card-float .close mat-icon {
+  cursor: pointer;
+}
+.content .item .card-float ul {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+}
+.content .item .ano-d,
+.content .item .price-d {
+  width: 30%;
+  padding: 5px;
+}
+.content .item .ano-h,
+.content .item .price-h {
+  width: 30%;
+  padding: 5px;
+}

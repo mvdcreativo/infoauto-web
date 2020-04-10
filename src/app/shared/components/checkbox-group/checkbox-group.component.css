@@ -1,0 +1,10 @@
+ul {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  margin-bottom: 1rem;
+  padding-top: 1rem;
+}
+ul li {
+  font-size: 0.8em;
+  padding: 0.5rem;
+}

@@ -1,0 +1,43 @@
+
+
+
+.content{
+    .content-button{
+        padding: 10px;
+        .btn{
+            padding: 0.5rem;
+            border-radius: 5px;
+            width: 100%;
+            .icon-acc {
+                padding: 1rem;
+                width: 50%;
+                fill: white;
+            }
+            p{
+                width: 100%;
+            }
+            
+        }
+    }
+    
+}
+
+// .mat-flat-button{
+    //     white-space: normal!important
+    // }
+    
+    @media (max-width: 600px) {
+        
+        .icon-acc {
+            width: 30%!important;
+            fill: white;
+        }
+    }
+
+    // @media (min-width: 1024px) {
+        //     .content{
+//         height: 15vh;
+
+//         grid-template-columns: repeat(4,1fr);
+//     }
+// }

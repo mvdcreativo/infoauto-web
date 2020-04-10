@@ -1,0 +1,36 @@
+<div class="carousel">
+    <mvd-carousel-home></mvd-carousel-home>
+</div>
+<header class="header">
+    <mvd-header [color]="'transparent'"></mvd-header>
+</header>
+
+<div class="container">
+
+    <div class="searcher">
+        <searcher></searcher>
+    </div>
+
+    <section class="accesos-directos">
+        <accesos-directos></accesos-directos>
+    </section>
+
+    <section class="destacados">
+        <h2>Destacados 0km</h2>
+        <res-reutil [criterio]='{tariff_id : 1, condition: "0km", limit_page: 4}'></res-reutil>
+    </section>
+
+    <section class="destacados">
+        <h2>Destacados Usados</h2>
+        <res-reutil [criterio]='{tariff_id : 1, condition: "usado", limit_page: 4}'></res-reutil>
+    </section>
+
+    <section class="model-brand-popular">
+        <h2>Modelos más buscados</h2>
+        <span><a [routerLink]="['/listado']" [queryParams]="{}">Ver más...</a> </span>
+        <brand-model-popular></brand-model-popular>
+    </section>
+</div>
+<section>
+    <footer-component></footer-component>
+</section>

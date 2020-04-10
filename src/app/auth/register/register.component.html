@@ -1,0 +1,41 @@
+<div class="container-fluid" >
+  <div class="access row justify-content-md-rigth align-items-start">
+    <button [routerLink]="['/login']" routerLinkActive="router-link-active"  mat-button>Acceder</button>
+  </div>
+  <div class= "row justify-content-md-center align-items-center">
+    <mat-card class="col col-md-4">
+      <mat-card-header class="justify-content-md-center">
+          <mat-card-title>Registrese</mat-card-title>
+      </mat-card-header>
+      <form [formGroup]="form" (ngSubmit)="onSubmit()">
+        <div class="row">
+          <mat-form-field appearance="outline" appearance="outline">
+            <mat-label>Nombre</mat-label>
+            <input matInput formControlName="name" placeholder="Nombre">
+          </mat-form-field>
+        </div>
+        <div class="row">
+            <mat-form-field appearance="outline">
+              <mat-label>Correo electrónico</mat-label>
+              <input matInput formControlName="email" placeholder="Email">
+            </mat-form-field>
+        </div>
+        <div class="row">
+          <mat-form-field appearance="outline">
+            <mat-label>Contraseña</mat-label>
+            <input matInput formControlName="password" type="password" placeholder="Contraseña">
+          </mat-form-field>
+        </div> 
+        <div class="row">
+          <mat-form-field appearance="outline">
+            <mat-label>Confirmar contraseña</mat-label>
+            <input matInput formControlName="password_confirmation" type="password" placeholder="Confirmar contraseña">
+          </mat-form-field>
+        </div>
+        <div class="row">
+          <button mat-flat-button color="primary" >Enviar</button>
+        </div>
+      </form>
+    </mat-card>
+  </div>
+</div>

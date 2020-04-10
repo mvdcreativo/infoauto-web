@@ -1,0 +1,22 @@
+.content .content-button {
+  padding: 10px;
+}
+.content .content-button .btn {
+  padding: 0.5rem;
+  border-radius: 5px;
+  width: 100%;
+}
+.content .content-button .btn .icon-acc {
+  padding: 1rem;
+  width: 50%;
+  fill: white;
+}
+.content .content-button .btn p {
+  width: 100%;
+}
+@media (max-width: 600px) {
+  .icon-acc {
+    width: 30% !important;
+    fill: white;
+  }
+}

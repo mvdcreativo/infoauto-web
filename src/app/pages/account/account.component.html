@@ -1,0 +1,50 @@
+<mvd-header [mostrar]="true" (clickMenu)="drawer.toggle()"></mvd-header>
+
+<mat-sidenav-container class="sidenav-container">
+
+
+    <!-- SAID-NAV -->
+    <mat-sidenav #drawer class="sidenav" [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
+        [mode]="(isHandset$ | async) ? 'push' : 'side'" [opened]="(isHandset$ | async) === false">
+
+
+        <mat-nav-list>
+            <mat-list-item >
+                <mat-icon matListIcon class="material-icons-round">important_devices</mat-icon>
+                <a matLine >
+                    Mis Publicaciones
+                </a>
+            </mat-list-item>
+            <mat-list-item >
+                <mat-icon matListIcon class="material-icons-round">how_to_reg</mat-icon>
+                <a matLine >
+                    Perfil
+                </a>
+            </mat-list-item>
+            <mat-list-item >
+                <mat-icon matListIcon class="material-icons-round">receipt</mat-icon>
+                <a matLine >
+                    Datos de Facturación
+                </a>
+            </mat-list-item>
+        </mat-nav-list>
+
+
+
+
+    </mat-sidenav>
+    <!-- END SAINAV -->
+
+
+    <!-- MAIN CONTENT -->
+    <mat-sidenav-content>
+
+        <router-outlet></router-outlet>
+
+    </mat-sidenav-content>
+    <!--  -->
+
+</mat-sidenav-container>
+<section>
+    <footer-component></footer-component>
+</section>

@@ -1,0 +1,61 @@
+<div class="filters-bar color-back" *ngIf="itemFilter">
+    <mat-chip-list class="chip-list">
+        <mat-chip class="chip" *ngIf="itemFilter.searcher">
+            Buscando: {{ itemFilter.searcher }}
+            <mat-icon matChipRemove (click)="remove('searcher')">close</mat-icon>
+        </mat-chip>
+        <mat-chip class="chip" *ngIf="itemFilter.user">
+            Vendedor: {{ itemFilter.user }}
+            <mat-icon matChipRemove (click)="remove('user')">close</mat-icon>
+        </mat-chip>
+        <mat-chip class="chip" *ngIf="itemFilter.category">
+            {{ itemFilter.category }}
+            <mat-icon matChipRemove (click)="remove('category')">close</mat-icon>
+        </mat-chip>
+        <mat-chip class="chip" *ngIf="itemFilter.brand">
+            {{ itemFilter.brand }}
+            <mat-icon matChipRemove (click)="remove('brand')">close</mat-icon>
+        </mat-chip>
+        <mat-chip class="chip" *ngIf="itemFilter.model">
+            {{ itemFilter.model }}
+            <mat-icon matChipRemove (click)="remove('model')">close</mat-icon>
+        </mat-chip>
+        <mat-chip class="chip" *ngIf="itemFilter.condition">
+            {{ itemFilter.condition }}
+            <mat-icon matChipRemove (click)="remove('condition')">close</mat-icon>
+        </mat-chip>
+        <mat-chip class="chip" *ngIf="itemFilter.pricemin">
+            desde ${{ itemFilter.pricemin }}
+            <mat-icon matChipRemove (click)="remove('pricemin')">close</mat-icon>
+        </mat-chip>
+        <mat-chip class="chip" *ngIf="itemFilter.pricemax">
+            hasta ${{ itemFilter.pricemax }}
+            <mat-icon matChipRemove (click)="remove('pricemax')">close</mat-icon>
+        </mat-chip>
+        <mat-chip class="chip" *ngIf="itemFilter.yearmin">
+            desde {{ itemFilter.yearmin }}
+            <mat-icon matChipRemove (click)="remove('yearmin')">close</mat-icon>
+        </mat-chip>
+        <mat-chip class="chip" *ngIf="itemFilter.yearmax">
+            hasta {{ itemFilter.yearmax }}
+            <mat-icon matChipRemove (click)="remove('yearmax')">close</mat-icon>
+        </mat-chip>
+        <span *ngIf="itemFilter.attribute">
+            <ng-container *ngIf="attributes ; else elseTemplate">
+                <mat-chip class="chip" *ngFor="let attribute of attributes; let i=index ">
+                    {{ attribute}}
+                    <mat-icon matChipRemove (click)="remove('attribute',i)">close</mat-icon>
+                </mat-chip>
+            </ng-container>
+            <ng-template #elseTemplate>
+                <mat-chip class="chip">
+                    {{ itemFilter.attribute}}
+                    <mat-icon matChipRemove (click)="remove('attribute')">close</mat-icon>
+                </mat-chip>
+            </ng-template>
+
+
+        </span>
+
+    </mat-chip-list>
+</div>

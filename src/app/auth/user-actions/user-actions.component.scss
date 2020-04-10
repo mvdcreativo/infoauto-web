@@ -1,0 +1,58 @@
+
+.user{
+    // button{
+    //     margin: 1rem 0.2rem ;
+    //     font-family: NunitoLight!important;
+    //     border-radius: 50px;
+    //     font-size: 0.8em;
+    //     line-height: 2em;
+    // }
+    // max-width: 300px;
+    width: 100%;
+    float: right ;
+    display: grid;
+    grid-template-columns: 1fr;
+    align-items: center;
+    justify-content: right;
+    .account{
+        align-items: center;
+        justify-items: center;
+    }
+    .menu-user{
+        width: 100%;
+        display: grid;
+        grid-template-columns: 2fr 30px;
+        align-items: center;
+        justify-items: right;
+        border-radius: 5px;
+        // background-color: rgba(0, 0, 0, 0.06);
+        font-size: 16px!important;
+
+        padding: 0.5rem;
+        a{
+            color: #424242;
+            padding: 0.4rem 1rem;
+            font-size: 14px;
+            font-family: NunitoLight!important;
+            &:hover{
+                
+                color:#424242
+            }
+        }
+    }
+    span{
+        text-align: right;
+        .register{
+            border-radius: 50px;
+            font-family: NunitoLight!important;
+            line-height: 2em;
+            margin-left: 3px;
+        }
+        .login{
+            // background-color: rgba(0, 0, 0, 0.06);
+            border-radius: 50px;
+            font-family: NunitoLight!important;
+            line-height: 2em;
+        }
+    }
+}

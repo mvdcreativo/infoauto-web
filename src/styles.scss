@@ -1,1 +1,176 @@
+// @import url('https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200;0,300;0,400;0,600;0,700;0,800;0,900;1,200;1,300;1,400;1,600;1,700;1,800;1,900&display=swap');
+
+@font-face {
+    font-family: Nunito;
+    src: url(assets/fonts/Nunito-Regular.ttf);
+}
+@font-face {
+    font-family: NunitoBold;
+    src: url(assets/fonts/Nunito-Bold.ttf);
+}
+@font-face {
+    font-family: NunitoLight;
+    src: url(assets/fonts/Nunito-Light.ttf);
+}
+
+//reset
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    list-style: none;
+    outline: none;
+    
+    
+}
+select,input,button,a,.mat-select,.mat-card,.mat-button,.mat-form-field,h1,h2,h3,h4,p,button:focus{
+    font-family: Nunito!important;
+    font-size: 14px!important;
+    outline: none!important;
+
+}
+
+///H
+h1{
+    font-size: 2em!important;
+    font-family: NunitoBold!important;
+}
+h2{
+    font-size: 1em!important;
+    font-family: NunitoBold!important;
+}
+h3{
+    font-size: 0.8em!important;
+    font-family: NunitoBold!important;
+}
+
+////Input
+input{
+    width: 100%;
+    border: none;
+    outline: none;
+    
+}
+////
+
+
+
+///Bootstrap greed
+// @import '~bootstrap/scss/bootstrap';
+@import '~bootstrap/scss/bootstrap-reboot';
+@import '~bootstrap/scss/bootstrap-grid';
+@import 'styles-variables.scss';
+
+// Custom Theming for Angular Material
+// For more information: https://material.angular.io/guide/theming
+@import '~@angular/material/theming';
+// Plus imports for other components in your app.
+
+
+// Define a custom typography config that overrides the font-family as well as the
+// `headlines` and `body-1` levels.
+
+
+////////////CUSTOMIZA FUENTES
+$custom-typography: mat-typography-config(
+  $font-family: 'Nunito, sans-serif', 
+  $headline: mat-typography-level(32px, 48px, 700),
+  $body-1: mat-typography-level(16px, 24px, 500)
+);
+// Override typography CSS classes (e.g., mat-h1, mat-display-1, mat-typography, etc.).
+@include mat-base-typography($custom-typography);
+
+// Override typography for a specific Angular Material components.
+@include mat-checkbox-typography($custom-typography);
+
+// Override typography for all Angular Material, including mat-base-typography and all components.
+@include angular-material-typography($custom-typography);
+
+// Override the typography in the core CSS.
+@include mat-core($custom-typography);
+
+
+///////////
+
+
+////////////////
+// Include the common styles for Angular Material. We include this here so that you only
+// have to load a single css file for Angular Material in your app.
+// Be sure that you only ever include this mixin once!
+@include mat-core();
+
+// Define the palettes for your theme using the Material Design palettes available in palette.scss
+// (imported above). For each palette, you can optionally specify a default, lighter, and darker
+// hue. Available color palettes: https://material.io/design/color/
+$infoauto-web-primary: mat-palette($mat-blue, A700);
+$infoauto-web-accent: mat-palette($mat-amber, A200, A100, A400);
+
+// The warn palette is optional (defaults to red).
+$infoauto-web-warn: mat-palette($mat-red);
+
+// Create the theme object (a Sass map containing all of the palettes).
+$infoauto-web-theme: mat-light-theme($infoauto-web-primary, $infoauto-web-accent, $infoauto-web-warn);
+
+// Include theme styles for core and each component used in your app.
+// Alternatively, you can import and @include the theme mixins for each component
+// that you are using.
+@include angular-material-theme($infoauto-web-theme);
+
 /* You can add global styles to this file, and also import other style files */
+///////MATERIAL MODIFICACIONES
+.sidenav {
+    .mat-drawer-inner-container{
+      overflow: hidden!important;
+    }
+  }
+
+
+////FONTS
+
+html, body { height: 100%; }
+body { 
+    margin: 0; 
+    font-family: 'Nunito', sans-serif!important;
+    background-color: #ECEFF1;
+    a{
+        text-decoration: none!important;
+    } 
+}
+
+
+.btn-accent-secondary{
+    color: white;
+    background-color: $accent-second-color;
+    font-family: Nunito!important;
+    font-size: 16px!important;
+    &:hover{
+        background-color: #00ccb1;
+        color: white;
+        
+    }
+}
+
+.container{
+    font-family: Nunito!important;
+    max-width: 1200px!important;
+
+}
+
+a{
+    cursor: pointer;
+    font-size: 12px;
+    font-family: 'Nunito', "Helvetica Neue", sans-serif!important;
+}
+
+
+//////Gallery
+gallery-core[thumbPosition=bottom] gallery-thumbs .g-slider, gallery-core[thumbPosition=top] gallery-thumbs .g-slider{
+    left: 0%!important;
+    padding-left: 10%;
+}
+
+
+
+
+
+

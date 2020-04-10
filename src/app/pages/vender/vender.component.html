@@ -1,0 +1,26 @@
+<header class="header">
+    <mvd-header></mvd-header>
+</header>
+    <mat-card class="content">
+        <mat-card-header *ngIf="!movil" class="d-none d-md-block">
+            <mat-card-title  class="header-box-ventas">
+
+                    <ul>
+                        <li><a [routerLink]="[ '/vender/step1/' , publicationId ]" routerLinkActive="active"><span class="icon">1</span><span class="text d-xs-none d-sm-none d-md-none d-lg-flex">Selecciona un Vehículo</span></a></li>
+                        <li><a [routerLink]="[ '/vender/step2/' , publicationId ]" routerLinkActive="active"><span class="icon">2</span><span class="text d-xs-none d-sm-none d-md-none d-lg-flex">Ficha Técnica</span></a></li>
+                        <li><a [routerLink]="[ '/vender/step3/' , publicationId ]" routerLinkActive="active"><span class="icon">3</span><span class="text d-xs-none d-sm-none d-md-none d-lg-flex">Imágenes</span></a></li>
+                        <li><a [routerLink]="[ '/vender/step4/' , publicationId ]" routerLinkActive="active"><span class="icon">4</span><span class="text d-xs-none d-sm-none d-md-none d-lg-flex">Datos extra del Vehículo</span></a></li>
+                        <li><a [routerLink]="[ '/vender/step5/' , publicationId ]" routerLinkActive="active"><span class="icon">5</span><span class="text d-xs-none d-sm-none d-md-none d-lg-flex">Como quieres vender tu vehículo?</span></a></li>
+                    </ul>
+
+            </mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+            <router-outlet></router-outlet>
+        </mat-card-content>
+    </mat-card>
+
+
+    <section class="footer">
+        <footer-component></footer-component>
+    </section>

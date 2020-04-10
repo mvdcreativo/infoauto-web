@@ -1,0 +1,40 @@
+<mat-card class="container" *ngIf="publication" >
+    <mat-card-header>
+        <mat-card-title>Paso 4 - Datos extra del Vehículo</mat-card-title>
+    </mat-card-header>
+    <div class="content">
+       <!-- ////extras -->
+
+
+        
+        <div class="extras">
+            <mat-card-header>
+                <mat-card-title>Cuentanos que lo hace único</mat-card-title>
+            </mat-card-header>
+
+            <checkbox-group [options]="checkboxes" [selectedValues]="publicationExtras" (toggle)="attCheck($event,0)">
+            </checkbox-group>
+    
+        </div>
+
+        
+        <form *ngIf="formStep3" [formGroup]="formStep3" >
+
+            <mat-card-header>
+                <mat-card-title>Describe tu vehículo</mat-card-title>
+            </mat-card-header>
+            <div class="description">
+                <mat-form-field class="text-description" appearance="outline">
+                    <textarea formControlName="description"  matInput #description maxlength="1000" placeholder="Descripción"></textarea>
+                    <mat-hint align="start"><strong>Por su seguridad no introdusca datos personales</strong> </mat-hint>
+                    <mat-hint align="end">{{description.value.length}} / 1000</mat-hint>
+                </mat-form-field>
+            </div>
+            <div class="content-btns"> 
+                <button  mat-stroked-button (click)="back()" routerLinkActive="active">Atras</button>
+                <button color="primary"  mat-flat-button [disabled]="!formStep3.valid" (click)="submitStep3()" >Siguiente</button>
+            </div>
+        </form>
+
+    </div>
+</mat-card>

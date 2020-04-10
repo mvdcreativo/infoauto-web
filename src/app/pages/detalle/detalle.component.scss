@@ -1,0 +1,129 @@
+
+
+.content{
+    padding-top: 2rem;
+    width: 100%;
+    max-width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 1rem!important;
+    .row{
+
+    }
+    .images{
+
+
+    }
+
+    .data-user{
+        width: 100%;
+        div{
+            margin-bottom: 2rem;
+        }
+        .year-km{
+            font-size: 1em;
+            font-family: NunitoLight!important;
+            color: grey;
+            span{
+
+            }
+        }
+        .ubication{
+            font-size: 1em;
+            font-family: NunitoLight!important;
+            color: grey;
+            span{
+
+            }
+        }
+        .contactar{
+            width: 100%;
+            display: grid;
+            justify-items: center;
+            button{
+                width: 50%;
+                padding: 1rem;
+                font-size: 1em;
+            }
+        }
+
+    }
+    h2{
+        font-size: 1.3em;
+        margin-bottom: 1rem;
+    }
+    .attributes{
+        .content-ficha{
+            .mat-card{
+                // margin: 5px;
+                .mat-card-content{
+                    ul{
+                        li{
+                            .mat-icon{
+                                font-size: 18px;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+    .extras, .description{
+        margin-top: 2rem;
+        .mat-card{
+            .mat-card-header{
+                .mat-card-subtitle{
+                    font-family: NunitoBold!important;
+                }
+            }
+            .mat-card-content{
+                ul{
+                    li{
+                        .mat-icon{
+                            font-size: 18px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+
+    
+}
+
+.interes{
+    padding: 20px!important;
+    background-color: #d8dce7;
+    .relacionados, .pub-vendedor{
+        max-width: 1200px;
+        margin-left: auto;
+        margin-right: auto;
+        padding: 1rem;
+        margin-bottom: 2rem;
+        margin-top: 1rem;
+        overflow: hidden;
+
+        h2{
+            font-size: 1.3em;
+            text-align: center;
+        }
+        span{
+            display: grid;
+            justify-items: right;
+            a{
+                text-decoration: none;
+                font-size: 1em;
+                padding: 0.5rem;
+                color: grey;
+            }
+        }
+    }
+}
+
+
+
+.chart{
+    width: 100%;
+    // height: 200px;
+}

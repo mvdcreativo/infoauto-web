@@ -1,0 +1,43 @@
+<mat-card class="container" *ngIf="publication">
+    <mat-card-header>
+        <mat-card-title>Paso 2 - Ficha Técnica</mat-card-title>
+    </mat-card-header>
+    <!-- <div class="content">
+        <checkbox-group [options]="attrCheckboxes" [selectedValues]="publicationAttributes" (toggle)="attCheck($event,0)">
+        </checkbox-group>
+        <mat-divider></mat-divider>
+
+    </div> -->
+    <div class="content" *ngFor="let item of attrCheckboxesChildren; let i=index">
+        <!-- <h5>{{ item.title }}</h5>
+    <checkbox-group [options]="item.attributes" [selectedValues]="publicationAttributes" (toggle)="attCheck($event, i)">
+    </checkbox-group> -->
+        <ng-container *ngIf="item.multi_option === '1'; else elseTemplate">
+
+            <label>{{ item.title }}</label>
+            <mat-radio-group class="radio-group" [value]="value(item.attributes, i)">
+                <mat-radio-button class="radio-button" *ngFor="let sItem of item.attributes" [value]="sItem.value"
+                    (change)="attCheck($event.value, i)">
+                    {{sItem.label}}
+                </mat-radio-button>
+            </mat-radio-group>
+            <mat-divider [inset]="true"></mat-divider>
+
+        </ng-container>
+
+        <ng-template #elseTemplate>
+
+            <label>{{ item.title }}</label>
+            <checkbox-group [options]="item.attributes" [selectedValues]="publicationAttributes"
+                (toggle)="attCheck($event, i)">
+            </checkbox-group>
+            <mat-divider></mat-divider>
+        </ng-template>
+    </div>
+
+    <div class="content-btns">
+        <button  mat-stroked-button (click)="back()" routerLinkActive="active">Atras</button>
+        <button color="primary" mat-flat-button (click)="submitStep2()">Siguiente</button>
+    </div>
+
+</mat-card>

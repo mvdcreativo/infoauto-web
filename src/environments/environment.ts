@@ -3,7 +3,10 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  API: 'http://infoauto-api.test/api/',
+  AuthAPI: 'http://infoauto-api.test/api/auth/',
+  urlFiles: 'http://infoauto-api.test/storage/'
 };
 
 /*

@@ -1,0 +1,96 @@
+
+<mat-card class="container">
+    <mat-card-header>
+        <mat-card-title>Paso 1 - Selecciona un Vehículo</mat-card-title>
+    </mat-card-header>
+        
+    <div class="container-ventas">
+    <div class="step">
+        
+    </div>
+    <form class="form" [formGroup]="formStep1" (ngSubmit)="submitStep1()">
+        <div class="content-form">
+            <div class="searcher row">
+                <mat-form-field class="category col-xs-12 col-sm-12 col-md-6 col-lg-4">
+                    <mat-label>Tipo Vehículo</mat-label>
+                    <mat-select formControlName="vehicle_category_id" [(value)]="categoryId">
+                        <mat-option *ngFor="let category of categories" [value]='category.id'>
+                            {{ category.name }}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+        
+        
+                <mat-form-field class="brand  col-xs-12 col-sm-12 col-md-6 col-lg-4">
+                    <mat-label>Marca</mat-label>
+        
+                    <mat-select formControlName="brand_id" (selectionChange)="changeBrand($event.value)">
+                        <mat-option>Ninguna marca</mat-option>
+                        <mat-option *ngFor="let brand of brands" [value]='brand.id'>{{ brand.name }}</mat-option>
+                    </mat-select>
+                </mat-form-field>
+        
+                <mat-form-field class="model col-xs-12 col-sm-12 col-md-6 col-lg-4">
+                    <mat-label>Modelo</mat-label>
+                    <mat-select formControlName="vehicle_model_id" (selectionChange)="changeModel($event.value)">
+                        <mat-option>Ningún modelo</mat-option>
+                        <mat-option *ngFor="let model of models" [value]='model.id'>{{ model.name }}</mat-option>
+                    </mat-select>
+                </mat-form-field>
+                <mat-form-field class="sub-model col-xs-12 col-sm-12 col-md-6 col-lg-4">
+                    <mat-label>sub-Modelo</mat-label>
+                    <mat-select formControlName="vehicle_sub_model_id">
+                        <mat-option>Ningún sub-Modelo</mat-option>
+                        <mat-option *ngFor="let subModel of subModels" [value]='subModel.id'>{{ subModel.name }}</mat-option>
+                    </mat-select>
+                </mat-form-field>
+                <mat-form-field class="year col-xs-12 col-sm-12 col-md-6 col-lg-4">
+                    <mat-label>Año</mat-label>
+                    <mat-select formControlName="year">
+                        <mat-option>Todos</mat-option>
+                        <mat-option *ngFor="let ano of anos" [value]='ano.value'>{{ ano.option}}</mat-option>
+                    </mat-select>
+                </mat-form-field>
+                <mat-form-field class="condition col-xs-12 col-sm-12 col-md-6 col-lg-4">
+                    <mat-label>Condición</mat-label>
+                    <mat-select formControlName="condition_id"  (selectionChange)= "onConditionChanged($event)">
+                        <mat-option>Todos</mat-option>
+                        <mat-option *ngFor="let condition of conditions | async" [value]='condition.id'>{{ condition.name }}</mat-option>
+                    </mat-select>
+                </mat-form-field>     
+                <mat-form-field class="recorrido col-xs-12 col-sm-12 col-md-6 col-lg-4">
+                    <mat-label>km recorridos</mat-label>
+                    <input formControlName="km" matInput>                 
+                </mat-form-field>
+                <mat-form-field class="price-condition col-xs-12 col-sm-12 col-md-6 col-lg-4">
+                    <mat-label>Condición de Precio</mat-label>
+                    <mat-select formControlName="price_condition_id">
+                        <mat-option>Todos</mat-option>
+                        <mat-option *ngFor="let pricecond of priceConditions | async" [value]='pricecond.id'>{{ pricecond.name }}</mat-option>
+                    </mat-select>
+                </mat-form-field>                           
+                <div class="price-content col-xs-12 col-sm-12 col-md-6 col-lg-4">
+                    <mat-form-field class="currency" >
+                        <mat-label>Moneda</mat-label>
+                        <mat-select formControlName="currency_id">
+                            <mat-option *ngFor="let currency of currencies | async" [value]='currency.id'>{{ currency.symbol }}</mat-option>
+                        </mat-select>
+                    </mat-form-field>  
+                    <mat-form-field class="price">
+                        <mat-label>Precio</mat-label>
+                        <input formControlName="price" matInput>                 
+                    </mat-form-field>
+                </div>        
+        
+            </div>
+            <div class="content-btns"> 
+                <button color="primary"  class="" mat-flat-button [disabled]="!formStep1.valid" >Continuar</button>
+            </div>
+
+        </div>
+    
+    
+    </form>
+
+</div>
+</mat-card>

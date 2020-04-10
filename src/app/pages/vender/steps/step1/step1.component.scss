@@ -1,0 +1,60 @@
+.container{
+    box-shadow: none;
+    .container-ventas{
+        width: 100%;
+        .form{
+            .content-form{
+                position: relative;
+                width: 100%;
+                .searcher{
+                    font-family: NunitoLight!important;
+                    font-size: 0.9em;
+                    .mat-form-field{
+
+                        // background-color: rgba(45, 133, 247, 0.116);;
+                    }
+                    .category{
+                    }
+                    .brand{
+                    }
+                    .model{
+                    }
+                    .sub-model{
+                    }
+                    .year{
+                    }
+                    .condition{
+                    }
+                    .recorrido{
+                    }
+                    .price-condition{
+                    }
+                    .price-content{
+                        font-family: NunitoBold!important;
+                        border-radius: 5px;
+                        max-width: 100%;
+                        display: grid;
+                        background-color: rgba(247, 234, 45, 0.274);
+                        grid-template-columns: 30% 70%;
+                        .price{
+                            grid-column: 2/3;
+                            min-width: 100%;
+                        }
+                        .currency{
+                            grid-column: 1/2;
+                        }
+                    }
+                }
+            }
+        
+        }
+    }
+    .content-btns{
+        text-align: right;
+        margin-top: 2rem;
+        button{
+            margin-left: 1rem
+        }
+    
+    }
+}

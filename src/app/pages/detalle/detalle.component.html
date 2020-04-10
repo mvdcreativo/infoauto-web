@@ -1,0 +1,104 @@
+<mvd-header></mvd-header>
+
+<div class="content" *ngIf="vehiculo">
+    <div class="row">
+        <div class="images col-xs-12 col-sm-12 col-md-6">
+            <detalle-gallery class="detalle-gallery" [images]='images'></detalle-gallery>
+        </div>
+        <div class="data-user row col-xs-12 col-sm-12 col-md-6 col-lg-6">
+            <h2 class="col-12">{{ title }}</h2>
+            <div class="year-km col-12">
+                <span>año {{ vehiculo.year }}</span> - <span>{{ vehiculo.condition.name }}</span><span
+                    *ngIf="vehiculo.condition_id != 1"> - {{ vehiculo.km }} Km.</span>
+            </div>
+            <div class="ubication col-12">
+                <span>{{ vehiculo.city.state.name }} - {{ vehiculo.city.name }} </span>
+            </div>
+            <div class="precio  col-12">
+                <h1>{{ vehiculo.currency.abbreviation }} {{ vehiculo.price | number}}</h1>
+            </div>
+            <div class="contactar">
+                <button class="btn-buscar" color="primary" mat-flat-button>Contactar</button>
+            </div>
+
+            <div class="chart col-12">
+                <chart [vehiculoDetalle]="vehiculo"></chart>
+            </div>
+        </div>
+    </div>
+    <div class="attributes" *ngIf="caracteristicas">
+        <h2 class="col-12">Ficha Tecnica y Equipamiento</h2>
+        <div class="content-ficha row justify-content-between">
+
+            <div class="content-card col-12 col-md-4 col-lg-3 my-1" *ngFor="let caracteristica of caracteristicas">
+                <mat-card>
+                    <mat-card-header>
+                        <mat-card-title>{{ caracteristica.name }}</mat-card-title>
+                    </mat-card-header>
+                    <mat-card-content>
+                        <ul>
+                            <li class="align-items-center" *ngFor="let attr of caracteristica.attributes">
+                                <mat-icon color="primary" class="material-icons-round" >done</mat-icon>{{ attr.name}}
+                            </li>
+                        </ul>
+                    </mat-card-content>
+                </mat-card>
+            </div>
+
+        </div>
+    </div>
+    <div class="extras" *ngIf="vehiculo.extras">
+        <h2 class="col-12">Extras</h2>
+        
+        <mat-card>
+            <mat-card-header>
+                <mat-card-subtitle>El vendedor especificó particularidades de este Vehículo</mat-card-subtitle>
+            </mat-card-header>
+            <mat-card-content>
+                <ul>
+                    <li *ngFor="let item of vehiculo.extras">
+                        <mat-icon  color="primary" class="material-icons-round" >done</mat-icon>
+                        {{ item.name }}
+                    </li>
+                </ul>
+            </mat-card-content>
+        </mat-card>
+    </div>
+    <div class="description" *ngIf="vehiculo.description">
+        <h2 class="col-12">Descripción del vendedor</h2>
+        <mat-card>
+            <mat-card-header>
+                <mat-card-subtitle>Otros datos del Vehículo</mat-card-subtitle>
+            </mat-card-header>
+            <mat-card-content>
+                        
+                        <p>{{ vehiculo.description }}</p>
+
+            </mat-card-content>
+        </mat-card>
+    </div>
+
+
+</div>
+
+
+<div class="interes container-fluid" *ngIf="vehiculo">
+
+    <section class="relacionados">
+        <h2>Quizás estos vehículos te pueden interesar</h2>
+        <span>
+            <a [routerLink]="['/listado']"
+                [queryParams]="{brand : vehiculo.brand.slug, model : vehiculo.vehicle_model.slug}">Ver más...</a>
+        </span>
+        <res-reutil [criterio]='{brand : vehiculo.brand.slug, model : vehiculo.vehicle_model.slug, limit_page: 4}'>
+        </res-reutil>
+    </section>
+    <section class="pub-vendedor">
+        <h2>Más publicaciones de este Vendedor</h2>
+        <span><a [routerLink]="['/listado']" [queryParams]="{user : vehiculo.user.slug}">Ver más...</a> </span>
+        <res-reutil [criterio]='{user_id : vehiculo.user_id,  limit_page: 4}'></res-reutil>
+    </section>
+</div>
+<section class="footer">
+    <footer-component></footer-component>
+</section>
