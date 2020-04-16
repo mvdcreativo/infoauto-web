@@ -36,6 +36,12 @@ export class AuthService {
     return this.currentUserSubject.value;
   }
 
+
+  findUser(id) {
+    return this.http.get<User>(`${environment.API}user/${id}`)
+  }
+
+
   register(credentials: User): Observable<User> {
     return this.http.post<User>(`${environment.API}auth/signup`, credentials)
       .pipe(
@@ -83,7 +89,7 @@ export class AuthService {
         // remove user from local storage to log user out
         localStorage.removeItem('currentUser');
         this.currentUserSubject.next(null);
-        // this.router.navigate(['login']);
+        this.router.navigate(['login']);
       }),
     );
 

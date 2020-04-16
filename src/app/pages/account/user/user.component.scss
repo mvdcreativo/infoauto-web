@@ -1,0 +1,130 @@
+.content{
+    width: 100%;
+    min-width: 800px;
+    overflow: hidden;
+    .mat-card{
+        min-height: 80vh;
+        box-shadow: none!important;
+        background-color: white;
+        border-top: solid 6px #2962FF
+        ;
+        
+        .mat-table {
+            width: 100%;
+        }
+    
+        .image{
+            height: 50px;
+        }
+        .btn{
+            background-color: #2D86F7;
+            color: white;
+            margin: 1rem;
+            
+            &:hover{
+                background-color: rgb(106, 166, 245);
+                &:disabled{
+                    background-color: #2D86F7;
+                    color: white;
+                    margin: 1rem;
+                }
+            }
+        }
+        
+        .columns{
+            display: grid;
+            grid-template-columns: repeat(2 , 1fr) auto;
+            column-gap: 2rem;
+            .slideEdit{
+                width: 100%;
+                justify-content: right;
+            }
+            .datos{
+                width: 100%;
+                font-size: 12px;
+                display: grid;
+                padding: 1rem;
+                grid-auto-rows: max-content;
+
+                .mat-list{
+                    font-size: 12px;
+                    .mat-list.item{
+                        p{
+                            font-size: 12px;
+
+                        }
+
+                    }
+
+                }
+                h2{
+                    font-size: 2em;
+                    padding: 1rem;
+                }
+                h4{
+                    padding: 1rem;
+                }
+                .mat-form-field {
+                    
+                    width: 100%;
+                    margin-left: 1rem;
+
+                }
+                .corto{
+                    width: 50%
+                }
+                .medio{
+                    width: 75%
+                }
+                .content-btn{
+                    width: 100%;
+                }
+            }
+            
+        }
+        
+    }
+    
+    .acciones{
+        width: 13%;
+    }
+    .cancel{
+        margin: 1rem;
+        color: #424242;
+        background-color: white;
+    }
+}
+label{
+    height: 50;
+    align-items: center;
+    padding-top: 10px;
+    .imgPrev{
+        width: 50px;
+        min-height: 50px;
+        cursor: pointer;
+        // background-image: ;
+    }
+
+}
+
+
+
+@media(max-width: 800px){
+    .columns{
+        grid-template-columns: repeat(1 , 100%);
+        .slideEdit{
+            grid-row: 1/2;
+            width: 100%;
+            justify-content: right;
+        }
+        .datos{
+            grid-row: 2/3;
+        }
+        .pass{
+            grid-row: 3/4;
+        }
+
+
+
+    }
+}

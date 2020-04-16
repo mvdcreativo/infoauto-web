@@ -19,11 +19,11 @@
                     <mat-icon>art_track</mat-icon>
                     <span>Publicaciones</span>
                 </button>
-                <button mat-menu-item>
+                <!-- <button mat-menu-item>
                     <mat-icon>favorite_border</mat-icon>
                     <span>Favoritos</span>
-                </button>
-                <button mat-menu-item>
+                </button> -->
+                <button mat-menu-item [routerLink]="[ '/mi-cuenta/perfil' ]">
                     <mat-icon>how_to_reg</mat-icon>
                     <span>Mis Datos</span>
                 </button>
@@ -42,7 +42,7 @@
         <span></span>
         <span>
             <a mat-flat-button class="login" color="primary" (click)="login()">Entrar</a>
-            <a mat-button href="#" class="register btn-accent-secondary" >Registrarse</a>
+            <a mat-flat-button href="#" class="register btn-accent-secondary" >Registrarse</a>
         </span>
     </div>
 </ng-template>

@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { AuthGuard } from '../auth/guards/auth.guard';
 
 
 const routes: Routes = [
@@ -22,10 +23,16 @@ const routes: Routes = [
   {
     path:'vender',
     loadChildren: ()=> import('./vender/vender.module').then(m => m.VenderModule),
+    canActivate: [AuthGuard]
+  },
+  {
+    path:'comparar',
+    loadChildren: ()=> import('./compare/compare.module').then(m => m.CompareModule),
   },
   {
     path:'mi-cuenta',
     loadChildren: ()=> import('./account/account.module').then(m => m.AccountModule),
+    canActivate: [AuthGuard]
   },
 ];
 

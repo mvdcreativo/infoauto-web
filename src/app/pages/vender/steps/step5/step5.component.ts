@@ -33,4 +33,16 @@ export class Step5Component implements OnInit {
 
   }
 
+
+  pagar(tariff_id){
+    this.udatePublication(tariff_id)
+  }
+
+  udatePublication(data) {
+    console.log(data);
+    const tariff = {tariff_id : data}
+    const nexStep = "/mi-cuenta/publicaciones"
+    return this._publishService.updatePublication(tariff, nexStep)
+  }
+
 }

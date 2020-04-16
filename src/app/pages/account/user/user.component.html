@@ -1,0 +1,129 @@
+<div class="content">
+    <mat-card>
+        <mat-card-header>
+            <mat-card-title>
+                Mis datos
+            </mat-card-title>
+        </mat-card-header>
+        <div class="columns" *ngIf="currenUser">
+            <form *ngIf="edit" [formGroup]="formAdd" class="datos">
+                <mat-form-field class="add">
+                    <input formControlName="name" type="text" matInput placeholder="Nombre">
+                    <mat-icon matSuffix>mode_edit</mat-icon>
+                </mat-form-field>
+                <mat-form-field class="add">
+                    <input formControlName="email" type="email" matInput placeholder="Correo eléctronico" >
+                </mat-form-field>
+                <mat-form-field class="corto">
+                    <input formControlName="phone" type="number" matInput placeholder="Teléfono">
+                    <mat-icon matSuffix>mode_edit</mat-icon>
+                </mat-form-field>
+                <mat-form-field class="add">
+                    <input formControlName="address" type="text" matInput placeholder="Dirección">
+                    <mat-icon matSuffix>mode_edit</mat-icon>
+                </mat-form-field>
+                <mat-form-field class="medio">
+                    <input formControlName="city" type="text" matInput placeholder="Ciudad">
+                    <mat-icon matSuffix>mode_edit</mat-icon>
+                </mat-form-field>
+                <mat-form-field class="corto">
+                    <input formControlName="ci" type="text" matInput placeholder="Doc. de Identidad">
+                    <mat-icon matSuffix>mode_edit</mat-icon>
+                </mat-form-field>
+                <mat-form-field class="medio">
+                    <input formControlName="rut" type="number" matInput placeholder="R.U.T.">
+                    <mat-icon matSuffix>mode_edit</mat-icon>
+                </mat-form-field>
+                <mat-form-field class="add">
+                    <input formControlName="company" type="text" matInput placeholder="company">
+                    <mat-icon matSuffix>mode_edit</mat-icon>
+                </mat-form-field>
+                <mat-form-field class="corto">
+                    <input formControlName="discount" type="number" matInput placeholder="Descuento">
+                    <span matPrefix>%&nbsp;</span>
+                    <mat-icon matSuffix>mode_edit</mat-icon>
+                </mat-form-field>
+
+
+
+                <div class="content-btn">
+                    <!-- <button *ngIf="!edit" class="btn" (click)="onSubmit()" [disabled]="!formAdd.valid" mat-button>Agregar</button> -->
+                    <button *ngIf="edit" class="btn" (click)="update(currenUser.id)" [disabled]="!formAdd.valid"
+                        mat-button>Guardar Cambio</button>
+                    <button class="cancel" mat-stroked-button (click)="oculta(mostrar = !mostrar)">
+                        Cancelar
+                        <mat-icon>close</mat-icon>
+                    </button>
+                </div>
+
+            </form>
+            <form *ngIf="edit" [formGroup]="formPass" class="datos pass">
+                <h4>Cambio de contraseña</h4>
+
+                <mat-form-field appearance="outline">
+                    <input formControlName="password" type="password" matInput placeholder="Nueva Contraseña">
+                    <span matPrefix></span>
+                    <mat-icon matSuffix>vpn_key</mat-icon>
+                </mat-form-field>
+                <mat-form-field appearance="outline">
+                    <input formControlName="passwordConfirm" type="password" matInput placeholder="Confirmar Nueva Contraseña">
+                    <span matPrefix></span>
+                    <mat-icon matSuffix>vpn_key</mat-icon>
+                </mat-form-field>
+                <div class="content-btn">
+                    <!-- <button *ngIf="!edit" class="btn" (click)="onSubmit()" [disabled]="!formAdd.valid" mat-button>Agregar</button> -->
+                    <button *ngIf="edit" class="btn" (click)="updatePass(currenUser.id)" [disabled]="!formPass.valid"
+                        mat-button>Guardar Contraseña</button>
+                    <button class="cancel" mat-stroked-button (click)="oculta(mostrar = !mostrar)">
+                        Cancelar
+                        <mat-icon>close</mat-icon>
+                    </button>
+                </div>
+            </form>
+
+            
+
+
+            <div class="datos" *ngIf="!edit">
+
+                <h4>{{ typeUser }}</h4>
+                <mat-list role="list">
+                    <mat-list-item role="listitem">
+                        <p mat-line> Nombre: <strong>{{currenUser.name}}</strong> </p>
+                    </mat-list-item>
+                    <mat-list-item role="listitem">
+                        <p mat-line> Correo Eléctronico: <strong>{{currenUser.email}}</strong> </p>
+                    </mat-list-item>
+                    <mat-list-item role="listitem">
+                        <p mat-line> Telefono / Celular: <strong>{{currenUser.phone}}</strong> </p>
+                    </mat-list-item>
+                    <mat-list-item role="listitem">
+                        <p mat-line> Durección: <strong>{{currenUser.address}}</strong> </p>
+                    </mat-list-item>
+                    <mat-list-item role="listitem">
+                        <p mat-line> Ciudad: <strong>{{currenUser.city_id}}</strong> </p>
+                    </mat-list-item>
+                    <mat-list-item role="listitem">
+                        <p mat-line> Documento de Idantidad: <strong>{{currenUser.ci}}</strong> </p>
+                    </mat-list-item>
+                    <mat-list-item role="listitem">
+                        <p mat-line> Empresa: <strong>{{currenUser.company}}</strong> </p>
+                    </mat-list-item>
+                    <mat-list-item role="listitem">
+                        <p mat-line> R.U.T.: <strong>{{currenUser.rut}}</strong> </p>
+                    </mat-list-item>
+                    <mat-list-item role="listitem">
+                        <p mat-line> Beneficio: <strong>{{currenUser.discount}}</strong></p>
+                    </mat-list-item>
+
+                </mat-list>
+            </div>
+            <!-- <div class="slideEdit">
+                <mat-slide-toggle class="btn-edit" [checked]= "checked" (change)="changeEdit()">
+                    Editar mis Datos
+                </mat-slide-toggle>
+            </div> -->
+
+        </div>
+    </mat-card>
+</div>

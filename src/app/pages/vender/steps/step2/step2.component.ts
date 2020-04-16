@@ -37,7 +37,10 @@ export class Step2Component implements OnInit {
       (param: Params) => {
         if (param.id) {
           this._publishService.getPublicationById(param.id).pipe(take(1)).subscribe(
-            res => this.getPublication()
+            res => {
+              this.getPublication()
+
+            }
           )
         } else {
           this.route.navigate(['/vender/step1'])
@@ -57,11 +60,18 @@ export class Step2Component implements OnInit {
       res => {
         this.publication = res
         this.selectValues()
+        // console.log(this._publishService.plantillaValue);
+        
+        
+
       }
     )
 
   }
 
+  private getPlantilla(){
+
+  }
 
   ////////SUBMIT
   submitStep2() {
@@ -166,10 +176,23 @@ export class Step2Component implements OnInit {
         console.log(res);
         
         if(res && res.attributes.length != 0){
-        this.publicationAttributes = res.attributes.map(v=> v.id)
-    //   console.log(this.publicationAttributes);
+          this.publicationAttributes = res.attributes.map(v=> v.id)
+          console.log(this.publicationAttributes);
         }else{
           this.publicationAttributes = []
+          this._publishService.findPlantilla(res).subscribe(
+            res => {
+              
+              console.log(res);
+              if(res && res.attributes.length != 0){
+                // this.publicationAttributes = []
+                this.publicationAttributes = res.attributes.map(v=> v.id)
+              }else{
+                
+                this.publicationAttributes = []
+              }
+            }
+          )
         }
       }
     )

@@ -36,7 +36,7 @@ h1{
     font-family: NunitoBold!important;
 }
 h2{
-    font-size: 1em!important;
+    font-size: 18px!important;
     font-family: NunitoBold!important;
 }
 h3{
@@ -142,7 +142,7 @@ body {
     color: white;
     background-color: $accent-second-color;
     font-family: Nunito!important;
-    font-size: 16px!important;
+    font-size: 14px!important;
     &:hover{
         background-color: #00ccb1;
         color: white;
@@ -161,6 +161,19 @@ a{
     font-size: 12px;
     font-family: 'Nunito', "Helvetica Neue", sans-serif!important;
 }
+.btn-ico-custom .mat-button-wrapper{
+    padding: 0px!important;
+
+}
+.mat-badge-content{
+    font-size: 12px!important;
+    font-family: NunitoLight!important;
+    width: 20px!important;
+    height: 20px!important;
+    line-height: 20px!important;
+    top:-5px!important
+
+}
 
 
 //////Gallery
@@ -169,6 +182,15 @@ gallery-core[thumbPosition=bottom] gallery-thumbs .g-slider, gallery-core[thumbP
     padding-left: 10%;
 }
 
+.toastSuccess{
+    background-color:  #42a847;
+}
+.toastWarn{
+    background-color: #bc5100;
+}
+.toastError{
+    background-color:  #d50000;
+}
 
 
 

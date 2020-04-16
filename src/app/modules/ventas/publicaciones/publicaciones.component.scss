@@ -1,11 +1,17 @@
 .content{
     width: 100%;
-    .mat-table {
-        width: 100%;
-    }
-    .mat-form-field {
-        font-size: 14px;
-        width: 30%;
+    .mat-card{
+        min-height: 80vh;
+        box-shadow: none!important;
+        background-color: white;
+        border-top: solid 6px #2962FF;
+        .mat-table {
+            width: 100%;
+        }
+        .mat-form-field {
+            font-size: 14px;
+            width: 30%;
+        }
     }
     
     }

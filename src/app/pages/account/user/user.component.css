@@ -1,0 +1,106 @@
+.content {
+  width: 100%;
+  min-width: 800px;
+  overflow: hidden;
+}
+.content .mat-card {
+  min-height: 80vh;
+  box-shadow: none !important;
+  background-color: white;
+  border-top: solid 6px #2962ff;
+}
+.content .mat-card .mat-table {
+  width: 100%;
+}
+.content .mat-card .image {
+  height: 50px;
+}
+.content .mat-card .btn {
+  background-color: #2d86f7;
+  color: white;
+  margin: 1rem;
+}
+.content .mat-card .btn:hover {
+  background-color: #6aa6f5;
+}
+.content .mat-card .btn:hover:disabled {
+  background-color: #2d86f7;
+  color: white;
+  margin: 1rem;
+}
+.content .mat-card .columns {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr) auto;
+  column-gap: 2rem;
+}
+.content .mat-card .columns .slideEdit {
+  width: 100%;
+  justify-content: right;
+}
+.content .mat-card .columns .datos {
+  width: 100%;
+  font-size: 12px;
+  display: grid;
+  padding: 1rem;
+  grid-auto-rows: max-content;
+}
+.content .mat-card .columns .datos .mat-list {
+  font-size: 12px;
+}
+.content .mat-card .columns .datos .mat-list .mat-list.item p {
+  font-size: 12px;
+}
+.content .mat-card .columns .datos h2 {
+  font-size: 2em;
+  padding: 1rem;
+}
+.content .mat-card .columns .datos h4 {
+  padding: 1rem;
+}
+.content .mat-card .columns .datos .mat-form-field {
+  width: 100%;
+  margin-left: 1rem;
+}
+.content .mat-card .columns .datos .corto {
+  width: 50%;
+}
+.content .mat-card .columns .datos .medio {
+  width: 75%;
+}
+.content .mat-card .columns .datos .content-btn {
+  width: 100%;
+}
+.content .acciones {
+  width: 13%;
+}
+.content .cancel {
+  margin: 1rem;
+  color: #424242;
+  background-color: white;
+}
+label {
+  height: 50;
+  align-items: center;
+  padding-top: 10px;
+}
+label .imgPrev {
+  width: 50px;
+  min-height: 50px;
+  cursor: pointer;
+}
+@media (max-width: 800px) {
+  .columns {
+    grid-template-columns: repeat(1, 100%);
+  }
+  .columns .slideEdit {
+    grid-row: 1/2;
+    width: 100%;
+    justify-content: right;
+  }
+  .columns .datos {
+    grid-row: 2/3;
+  }
+  .columns .pass {
+    grid-row: 3/4;
+  }
+}

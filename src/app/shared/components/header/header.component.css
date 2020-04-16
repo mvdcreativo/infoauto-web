@@ -36,7 +36,8 @@
   justify-items: center;
 }
 .menu-nav ul li a {
-  font-size: 14px;
+  width: 100%;
+  font-size: 16px;
   color: black;
 }
 .menu-nav ul li a:hover {
@@ -44,6 +45,14 @@
 }
 .menu-nav ul li a svg {
   width: 30px;
+}
+.menu-nav ul li a .mat-icon {
+  width: 30px !important;
+  height: 30px !important;
+}
+.menu-nav ul li a .mat-icon .mat-badge-content {
+  font-size: 12px !important;
+  font-weight: 400 !important;
 }
 @media (max-width: 600px) {
   .logo {
@@ -61,4 +70,13 @@
     margin-right: -5px !important;
     width: 50%;
   }
+  .btn-vender {
+    font-size: 14px !important;
+    font-family: Nunito !important;
+    font-weight: 400 !important;
+  }
+}
+.mat-badge-content {
+  font-size: 12px !important;
+  font-weight: 400 !important;
 }

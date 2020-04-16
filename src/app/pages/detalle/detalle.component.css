@@ -14,12 +14,19 @@
 }
 .content .data-user .year-km {
   font-size: 1em;
-  font-family: NunitoLight!important;
+  font-family: NunitoLight !important;
   color: grey;
+}
+.content .data-user .compare-button button .btn-ico-custom .mat-button-wrapper {
+  padding-top: 0px !important;
+}
+.content .data-user .compare-button button .mat-icon {
+  width: 34px !important;
+  height: 34px !important;
 }
 .content .data-user .ubication {
   font-size: 1em;
-  font-family: NunitoLight!important;
+  font-family: NunitoLight !important;
   color: grey;
 }
 .content .data-user .contactar {
@@ -52,7 +59,7 @@
 }
 .content .extras .mat-card .mat-card-header .mat-card-subtitle,
 .content .description .mat-card .mat-card-header .mat-card-subtitle {
-  font-family: NunitoBold!important;
+  font-family: NunitoBold !important;
 }
 .content .extras .mat-card .mat-card-content ul li .mat-icon,
 .content .description .mat-card .mat-card-content ul li .mat-icon {

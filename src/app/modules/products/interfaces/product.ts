@@ -23,6 +23,7 @@ export interface Product {
     extras?: Extras[];
     images?: Images[];
     neighborhood_id?: number;
+    cilindrada?: any;
 }
 
 export interface Attributes {

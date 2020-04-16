@@ -68,7 +68,12 @@
                         <mat-option>Todos</mat-option>
                         <mat-option *ngFor="let pricecond of priceConditions | async" [value]='pricecond.id'>{{ pricecond.name }}</mat-option>
                     </mat-select>
-                </mat-form-field>                           
+                </mat-form-field>
+                <mat-form-field class="col-xs-12 col-sm-12 col-md-6 col-lg-4">
+                    <mat-label>Cilindrada en  cc.</mat-label>
+                    <input matInput formControlName="cilindrada" placeholder="Expresar en cc. Ej. 1800">
+                    <span matSuffix>CC.</span>
+                </mat-form-field>                            
                 <div class="price-content col-xs-12 col-sm-12 col-md-6 col-lg-4">
                     <mat-form-field class="currency" >
                         <mat-label>Moneda</mat-label>

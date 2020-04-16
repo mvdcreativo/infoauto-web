@@ -16,6 +16,10 @@ export class PublishService {
   public publicationSubject$: BehaviorSubject<Product> = new BehaviorSubject<Product>(null);
   public publication: Observable<Product>;
 
+  public plantillaSubject$: BehaviorSubject<Product> = new BehaviorSubject<Product>(null);
+  public plantilla: Observable<Product>;
+
+
   constructor(
     private _http: HttpClient,
     private route: Router,
@@ -31,6 +35,28 @@ export class PublishService {
   public get publicationValue(): Product {
     return this.publicationSubject$.value;
   }
+  public get plantillaValue(): Product {
+    return this.plantillaSubject$.value;
+  }
+
+//// Busca plantilla
+  findPlantilla(product){
+    const dataFind = {
+      category_id : product.vehicle_category_id,
+      brand_id: product.brand_id,
+      model_id: product.vehicle_model_id,
+      sub_model_id: product.vehicle_sub_model_id,
+      year: product.year,
+      cilindrada: product.cilindrada
+    }
+
+    return this._http.post<Product>(`${environment.API}search-plantilla`, dataFind).pipe(take(1))
+
+    
+     
+  }
+
+
 
   ////Recupera Publicación
   getPublicationById(id:number){
@@ -38,7 +64,10 @@ export class PublishService {
       map(
         res =>{
           this.publicationSubject$.next(res)
-          console.log(this.publicationValue);
+
+          ///busca si existe y actualiza vaores por defecto Plantilla
+          
+          console.log(res);
           
         },
         error => this.route.navigate(['/vender/step1'])
@@ -73,7 +102,11 @@ export class PublishService {
       res => {
         this.publicationSubject$.next(res)
         console.log(res)
-        this.route.navigate([nexStep])
+        if(Step === "/mi-cuenta/publicaciones"){
+          this.route.navigate([Step])
+        }else{
+          this.route.navigate([nexStep])
+        }
       },
       error => { console.log(error) }
     )
@@ -118,5 +151,12 @@ export class PublishService {
   // getPublication(){
   //   return
   // }
+
+  deletePublication(id) {
+    return this._http.delete<Product>(`${environment.API}product/${id}`).pipe(
+      take(1)
+    )
+  }
+
 
 }

@@ -1,4 +1,10 @@
 export interface User {
+    discount: any;
+    company: any;
+    rut: any;
+    ci: any;
+    phone: any;
+    address?: any;
     id: number;
     name?: string;
     email: string;
@@ -8,6 +14,7 @@ export interface User {
     neighborhood_id:number;
     created_at: string;
     updated_at: string;
+    role?:string;
 }
 export interface CurrentUser {
     token: string;

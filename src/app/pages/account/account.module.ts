@@ -6,11 +6,13 @@ import { AccountComponent } from './account.component';
 import { SharedModule } from 'src/app/shared/shared.module';
 import { MaterialModule } from 'src/app/shared/material/material.module';
 import { ProductsModule } from 'src/app/modules/products/products.module';
+import { UserComponent } from './user/user.component';
 
 
 @NgModule({
   declarations: [
-    AccountComponent
+    AccountComponent,
+    UserComponent
   ],
   imports: [
     CommonModule,

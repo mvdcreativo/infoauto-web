@@ -1,8 +1,24 @@
+.content .compara {
+  padding: 10px;
+}
+.content .compara .btn {
+  padding: 26px !important;
+  border-radius: 5px;
+  width: 100%;
+}
+.content .compara .btn .icon-acc {
+  padding: 1rem !important;
+  width: 40% !important;
+  fill: white;
+}
+.content .compara .btn p {
+  width: 100%;
+}
 .content .content-button {
   padding: 10px;
 }
 .content .content-button .btn {
-  padding: 0.5rem;
+  padding: 12px;
   border-radius: 5px;
   width: 100%;
 }

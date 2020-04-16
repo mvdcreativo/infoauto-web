@@ -1,0 +1,16 @@
+.content {
+  width: 100%;
+}
+.content .mat-card {
+  min-height: 80vh;
+  box-shadow: none !important;
+  background-color: white;
+  border-top: solid 6px #2962ff;
+}
+.content .mat-card .mat-table {
+  width: 100%;
+}
+.content .mat-card .mat-form-field {
+  font-size: 14px;
+  width: 30%;
+}

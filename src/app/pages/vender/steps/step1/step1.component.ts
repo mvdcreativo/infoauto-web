@@ -85,6 +85,7 @@ export class Step1Component implements OnInit {
             city_id: this.publication.city_id,
             neighborhood_id: this.publication.neighborhood_id,
             price_condition_id: this.publication.price_condition_id,
+            cilindrada: this.publication.cilindrada,
           });
 
         }
@@ -113,6 +114,7 @@ export class Step1Component implements OnInit {
       city_id: [user.city_id],
       neighborhood_id: [user.neighborhood_id],
       price_condition_id: [null],
+      cilindrada: [null, Validators.required]
     });
 
     this.selectCategory()
@@ -126,7 +128,6 @@ export class Step1Component implements OnInit {
 
 
   submitStep1() {
-
 
     this.data = this.formStep1.value
     console.log(this.data);

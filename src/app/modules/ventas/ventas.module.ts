@@ -15,7 +15,7 @@ import { MaterialModule } from 'src/app/shared/material/material.module';
     CommonModule,
     VentasRoutingModule,
     SharedModule,
-    // MaterialModule,
+    MaterialModule,
   ]
 })
 export class VentasModule { } 

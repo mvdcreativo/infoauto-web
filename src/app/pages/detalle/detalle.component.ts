@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Params } from '@angular/router';
 import { GalleryItem, ImageItem } from '@ngx-gallery/core';
 import { SearchService } from 'src/app/modules/products/services/search.service';
+import { MatIconRegistry } from '@angular/material/icon';
+import { DomSanitizer } from '@angular/platform-browser';
 
 
 @Component({
@@ -18,8 +20,15 @@ export class DetalleComponent implements OnInit {
   
   constructor(
     private rutaActiva : ActivatedRoute,
-    private _searchService : SearchService
-  ) { }
+    private _searchService : SearchService,
+    private matIconRegistry: MatIconRegistry,
+    private domSanitizer: DomSanitizer
+  ) { 
+    this.matIconRegistry.addSvgIcon(
+      "compare",
+      this.domSanitizer.bypassSecurityTrustResourceUrl("../../../assets/images/ico-compara.svg")
+    );
+  }
 
     vehiculo : any = null;
     title:string 
@@ -101,4 +110,8 @@ export class DetalleComponent implements OnInit {
 
     return nuevoArray;
   }
+
+
+
+
 }

@@ -6,7 +6,7 @@
             <detalle-gallery class="detalle-gallery" [images]='images'></detalle-gallery>
         </div>
         <div class="data-user row col-xs-12 col-sm-12 col-md-6 col-lg-6">
-            <h2 class="col-12">{{ title }}</h2>
+            <h1 class="col-12">{{ title }}</h1>
             <div class="year-km col-12">
                 <span>año {{ vehiculo.year }}</span> - <span>{{ vehiculo.condition.name }}</span><span
                     *ngIf="vehiculo.condition_id != 1"> - {{ vehiculo.km }} Km.</span>
@@ -16,6 +16,14 @@
             </div>
             <div class="precio  col-12">
                 <h1>{{ vehiculo.currency.abbreviation }} {{ vehiculo.price | number}}</h1>
+            </div>
+            <div class="compare-button col-12">
+                <button mat-stroked-button color="primary">
+                    <button class="btn-ico-custom" mat-fab color="primary" aria-label="Agregar a comparador">
+                        <mat-icon svgIcon="compare"></mat-icon>
+                    </button>
+                    Comparar
+                </button>
             </div>
             <div class="contactar">
                 <button class="btn-buscar" color="primary" mat-flat-button>Contactar</button>

@@ -20,7 +20,6 @@ import { SnackBarComponent } from './components/snack-bar/snack-bar.component';
 
 @NgModule({
   declarations: [
-    SnackBarComponent,
     HeaderComponent,
     CarouselHomeComponent,
     FooterComponent,

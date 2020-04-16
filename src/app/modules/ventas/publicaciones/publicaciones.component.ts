@@ -5,6 +5,9 @@ import { Product } from '../../products/interfaces/product';
 import { SettingApiService } from '../../services/setting-api.service';
 import { Router } from '@angular/router';
 import { SnackBarService } from 'src/app/shared/components/snack-bar/services/snack-bar.service';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { SnackBarComponent } from 'src/app/shared/components/snack-bar/snack-bar.component';
+import { PublishService } from '../services/publish.service';
 
 export interface PeriodicElement {
   name: string;
@@ -26,10 +29,11 @@ export class PublicacionesComponent implements OnInit {
 
   constructor(
     private _ventasService: VentasService,
-    private _settingsService: SettingApiService,
+    private _publishService: PublishService,
     private route: Router,
-    private _snackBarService: SnackBarService
-  ) { }
+    private _snackBar: MatSnackBar
+
+    ) { }
 
   ngOnInit() {
 
@@ -51,18 +55,45 @@ export class PublicacionesComponent implements OnInit {
   }
 
   deleteReg(id:number){
-    this._settingsService.deleteBrand(id).subscribe(
+    this._publishService.deletePublication(id).subscribe(
       res => {
-        this._snackBarService.openSnackBar('success', `Tipo "${res.name}" eliminado con éxito!!`)
+        this.openSnackBar('success', `Publicación "${res.name_concat}" eliminada con éxito!!`)
         this.getPublication()
       },
       err =>{
-        this._snackBarService.openSnackBar('success', err)
+        this.openSnackBar('error', err)
 
       }
     )
   }
 
+      ////////////////////
+      openSnackBar(estadoRes, message: string) {
+        let classToast: string;
+        switch (estadoRes) {
+          case "success":
+            classToast = "toastSuccess"
+            break;
+          case "warn":
+            classToast = "toastWarn"
+            break;
+          case "error":
+            classToast = "toastError"
+            break;
+    
+          default:
+            classToast = "toastError"
+            break;
+        }
+    
+        const durationSeconds = 5;
+        this._snackBar.openFromComponent(SnackBarComponent, {
+          data: message,
+          panelClass: [classToast],
+          verticalPosition: 'top',
+          duration: durationSeconds * 1000,
+        });
+      }
 
   applyFilter(filterValue: string) {
     this.dataSource.filter = filterValue.trim().toLowerCase();

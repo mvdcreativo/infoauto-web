@@ -11,19 +11,19 @@
         <mat-nav-list>
             <mat-list-item >
                 <mat-icon matListIcon class="material-icons-round">important_devices</mat-icon>
-                <a matLine >
+                <a matLine [routerLink]="[ '/mi-cuenta/publicaciones' ]" routerLinkActive="active">
                     Mis Publicaciones
                 </a>
             </mat-list-item>
             <mat-list-item >
                 <mat-icon matListIcon class="material-icons-round">how_to_reg</mat-icon>
-                <a matLine >
+                <a [routerLink]="[ '/mi-cuenta/perfil' ]" routerLinkActive="active" matLine >
                     Perfil
                 </a>
             </mat-list-item>
             <mat-list-item >
                 <mat-icon matListIcon class="material-icons-round">receipt</mat-icon>
-                <a matLine >
+                <a matLine  >
                     Datos de Facturación
                 </a>
             </mat-list-item>
